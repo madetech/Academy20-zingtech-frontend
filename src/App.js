@@ -1,16 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import { Button } from 'govuk-react';
+import Page from '@govuk-react/page';
+import BackLink from '@govuk-react/back-link';
+import { H1 } from '@govuk-react/heading';
 
 function App() {
-  const MyComponent = ({title}) => (<div>
-    <h1>{title}</h1>
-    <Button />
-  </div>)
-  
   return (
     <div>
-      <MyComponent title="Emmas Button" > Blah blah Blah </ MyComponent >
+      <Page beforeChildren={<BackLink href="#" />}>
+        <H1>Page title</H1>
+      </Page>   
     </div>
   );
 }
