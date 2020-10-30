@@ -22,7 +22,7 @@ version: 2.1
 orbs:
   heroku: circleci/heroku@0.0.10
   node: circleci/node@2.0.2
-  slack: circleci/slack@4.1.1
+  slack: "circleci/slack@4.1.1"
 
 workflows:
   test-and-deploy:
