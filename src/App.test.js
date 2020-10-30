@@ -14,9 +14,9 @@ test('Emma is here', () => {
 });
 
 
-test('Bob is here', () => {
+test('James is here', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Bob/i);
+  const linkElement = screen.getByText(/james/i);
   expect(linkElement).toBeInTheDocument();
 });
 
