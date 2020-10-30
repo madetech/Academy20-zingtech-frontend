@@ -17,28 +17,14 @@
 #     jobs:
 #       - heroku/deploy-via-git
 
-version: 2.1
-
 orbs:
   heroku: circleci/heroku@0.0.10
   node: circleci/node@2.0.2
-  slack: "circleci/slack@4.1.1"
-
-jobs:
-  test:
-    - node/test
-  deploy:
-    - heroku/deploy-via-git:
-        requires:
-          - node/test
-  notify:
-    - slack/notify:
-        event: fail
-        template: basic_fail_1
-
+version: 2.1
 workflows:
   test-and-deploy:
     jobs:
-      - test
-      - deploy
-      - notify
+      - node/test
+      - heroku/deploy-via-git:
+          requires:
+            - node/test
