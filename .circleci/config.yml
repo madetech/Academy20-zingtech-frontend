@@ -1,18 +1,30 @@
-orbs: # declare what orbs we are going to use
-  node: circleci/node@2.0.2 # the node orb provides common node-related configuration 
+# orbs: # declare what orbs we are going to use
+#   node: circleci/node@2.0.2 # the node orb provides common node-related configuration 
+#   heroku: circleci/heroku@0.0.10
+
+# version: 2.1 # using 2.1 provides access to orbs and other features
+
+# workflows:
+#   matrix-tests:
+#     jobs:
+#       - node/test:
+#           version: 13.11.0
+#       - node/test:
+#           version: 12.16.0
+#       - node/test:
+#           version: 10.19.0
+#   heroku_deploy:
+#     jobs:
+#       - heroku/deploy-via-git
+
+orbs:
   heroku: circleci/heroku@0.0.10
-
-version: 2.1 # using 2.1 provides access to orbs and other features
-
+  node: circleci/node@2.0.2
+version: 2.1
 workflows:
-  matrix-tests:
+  test-and-deploy:
     jobs:
-      - node/test:
-          version: 13.11.0
-      - node/test:
-          version: 12.16.0
-      - node/test:
-          version: 10.19.0
-  heroku_deploy:
-    jobs:
-      - heroku/deploy-via-git
+      - node/test
+      - heroku/deploy-via-git:
+          requires:
+            - node/test
