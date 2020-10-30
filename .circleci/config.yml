@@ -1,5 +1,5 @@
 # orbs: # declare what orbs we are going to use
-#   node: circleci/node@2.0.2 # the node orb provides common node-related configuration 
+#   node: circleci/node@2.0.2 # the node orb provides common node-related configuration
 #   heroku: circleci/heroku@0.0.10
 
 # version: 2.1 # using 2.1 provides access to orbs and other features
@@ -28,3 +28,6 @@ workflows:
       - heroku/deploy-via-git:
           requires:
             - node/test
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
