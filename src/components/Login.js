@@ -1,10 +1,10 @@
 
 import InputField from '@govuk-react/input-field';
 import Button from '@govuk-react/button';
+import Link from '@govuk-react/link';
 
 const Login = () => (
   <>
-
     <InputField    
       name="emailaddress"
       hint={[
@@ -26,7 +26,7 @@ const Login = () => (
       Password
     </InputField>
     <br/>
-    <Button>Login</Button>
+    <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><Button>Login</Button></Link>
   </>
 );
 
