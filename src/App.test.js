@@ -1,22 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { BrowserRouter } from "react-router-dom";
 
-test('Claire is here', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Claire/i);
-  expect(linkElement).toBeInTheDocument();
+// test utils file
+const renderWithRouter = (ui, { route = '/' } = {}) => {
+  window.history.pushState({}, 'Test page', route)
+
+  return render(ui, { wrapper: BrowserRouter })
+}
+
+
+test('Title exists on homepage', () => {
+  renderWithRouter(<App />);
+  const title = screen.getAllByText(/HMRC-HR/);
+  expect(title[0]).toBeInTheDocument();
 });
 
-test('Emma is here', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/emma/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
-
-test('James is here', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/james/i);
-  expect(linkElement).toBeInTheDocument();
-});
 
