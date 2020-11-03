@@ -21,11 +21,13 @@ function App() {
   return (
     <Router>
       <Fragment>
-        <Page beforeChildren={<BackLink href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />}>
-          <Route exact path="/">
-            <Login homepage="https://www.youtube.com/watch?v=dQw4w9WgXcQ"/>
-          </Route>
-          <Route exact path ="/employees">
+        <Route exact path="/">
+          <Page beforeChildren={<BackLink href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />}>
+              <Login homepage="https://www.youtube.com/watch?v=dQw4w9WgXcQ"/>
+          </Page>
+        </Route>
+        <Route exact path ="/employees">
+          <Page>
             <H1>HMRC HR - BOOM🤯</H1>
             <Table caption="Employee data">
               <Table.Row>
@@ -49,9 +51,9 @@ function App() {
                 <Table.Cell>54245753</Table.Cell>
               </Table.Row>
             </Table>
-          </Route>
-
-        </Page> 
+          </Page> 
+        </Route>
+        
 
         <Footer meta={
             <Footer.MetaCustom>
