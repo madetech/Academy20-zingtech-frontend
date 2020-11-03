@@ -12,7 +12,7 @@ import Table from '@govuk-react/table';
 
 // Our components 
 import LoginPage from './pages/LoginPage'
-import Profile from './components/Profile'
+import MyProfilePage from './pages/MyProfilePage'
 
 
 function App() {
@@ -23,9 +23,7 @@ function App() {
           <LoginPage/>
         </Route>
         <Route exact path ="/home">
-          <Page>
-            <Profile />
-          </Page> 
+          <MyProfilePage />
         </Route>
         
 

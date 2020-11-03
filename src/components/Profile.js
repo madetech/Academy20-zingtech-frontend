@@ -18,7 +18,7 @@ const data = {
 
 const Profile = (props) => (
   <>
-    <Table caption="My Profile">
+    <Table caption="Information we hold about you">
     <Table.Row>
       <Table.CellHeader>Name</Table.CellHeader>
       <Table.Cell>{`${data.first_name} ${data.last_name}`}</Table.Cell>
