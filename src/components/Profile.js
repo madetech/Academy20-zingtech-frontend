@@ -16,7 +16,7 @@ const data = {
   "office location": "Chendong"
 }
 
-const Profile = (props) => (
+const Profile = () => (
   <>
     <Table caption="Information we hold about you">
     <Table.Row>
