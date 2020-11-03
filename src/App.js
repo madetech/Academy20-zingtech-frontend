@@ -12,7 +12,7 @@ import Table from '@govuk-react/table';
 
 // Our components 
 import LoginPage from './pages/LoginPage'
-
+import Profile from './components/Profile'
 
 
 function App() {
@@ -22,31 +22,9 @@ function App() {
         <Route exact path="/">
           <LoginPage/>
         </Route>
-        <Route exact path ="/employees">
+        <Route exact path ="/home">
           <Page>
-            <H1>HMRC HR - BOOM🤯</H1>
-            <Table caption="Employee data">
-              <Table.Row>
-                <Table.CellHeader>Full Name</Table.CellHeader>
-                <Table.CellHeader>Employee ID</Table.CellHeader>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Emma Blott</Table.Cell>
-                <Table.Cell>41908374</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>James Francis</Table.Cell>
-                <Table.Cell>54245753</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Zack Adlington</Table.Cell>
-                <Table.Cell>457245457</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Claire Guest</Table.Cell>
-                <Table.Cell>54245753</Table.Cell>
-              </Table.Row>
-            </Table>
+            <Profile />
           </Page> 
         </Route>
         

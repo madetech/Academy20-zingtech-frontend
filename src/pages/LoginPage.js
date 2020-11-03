@@ -27,7 +27,7 @@ const LoginPage = (props) => (
     }
   >
     <Heading>Login</Heading>
-    <Login homepage="https://www.youtube.com/watch?v=dQw4w9WgXcQ"/>
+    <Login homepage="/home"/>
   </Page>
 </>
 );
