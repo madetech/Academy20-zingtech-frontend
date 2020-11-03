@@ -3,7 +3,7 @@ import InputField from '@govuk-react/input-field';
 import Button from '@govuk-react/button';
 import Link from '@govuk-react/link';
 
-const Login = () => (
+const Login = (props) => (
   <>
     <InputField    
       name="emailaddress"
@@ -26,7 +26,7 @@ const Login = () => (
       Password
     </InputField>
     <br/>
-    <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><Button>Login</Button></Link>
+    <Link href={props.homepage}><Button>Login</Button></Link>
   </>
 );
 
