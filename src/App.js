@@ -2,18 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Route, } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // Gov.UK React components
 import Page from '@govuk-react/page';
-import BackLink from '@govuk-react/back-link';
 import { H1 } from '@govuk-react/heading';
 import Footer from '@govuk-react/footer';
 import Table from '@govuk-react/table';
 
-
 // Our components 
-import Login from './components/Login'
+import LoginPage from './pages/LoginPage'
 
 
 
@@ -22,9 +20,7 @@ function App() {
     <Router>
       <Fragment>
         <Route exact path="/">
-          <Page beforeChildren={<BackLink href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />}>
-              <Login homepage="https://www.youtube.com/watch?v=dQw4w9WgXcQ"/>
-          </Page>
+          <LoginPage/>
         </Route>
         <Route exact path ="/employees">
           <Page>
