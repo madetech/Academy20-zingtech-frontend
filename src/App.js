@@ -11,13 +11,18 @@ import { H1 } from '@govuk-react/heading';
 import Footer from '@govuk-react/footer';
 import Table from '@govuk-react/table';
 
+// Our components 
+import Login from './components/Login'
+
+
+
 function App() {
   return (
     <Router>
       <Fragment>
         <Page beforeChildren={<BackLink href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />}>
           <Route exact path="/">
-            <p>Login component goes here</p>
+            <Login />
           </Route>
           <Route exact path ="/employees">
             <H1>HMRC HR - BOOM🤯</H1>
