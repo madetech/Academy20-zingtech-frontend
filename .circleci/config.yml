@@ -4,12 +4,7 @@ orbs:
   heroku: circleci/heroku@1.2.3
   node: circleci/node@2.0.2
   
-jobs:
-  test:
-    executor: node/default
-    steps: 
-      - node/test:
-          version: 15.0.1
+jobs: 
   deploy:
     executor: heroku/default
     steps:
@@ -20,5 +15,6 @@ jobs:
 workflows:
   test_and_deploy:
     jobs:
-      - test
+      - node/test:
+          version: 15.0.1
       - deploy
