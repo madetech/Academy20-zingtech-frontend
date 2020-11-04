@@ -53,14 +53,19 @@ const MyEmployeesPage = (props) => (
   <>
   <Page header={
   <TopNav serviceTitle="HMRC-HR">
-    <NavLink to={"/"}>
-      **********
-      UPDATE ME!
-      **********
-
-      (Trump Pence 2020)
-    </NavLink>
-  </TopNav> }
+  <NavLink to={"/home"} action="true">
+    My profile
+  </NavLink>
+  <NavLink to={"/employees"}>
+    <b style={{color:"#1d70b8"}}>My employees</b>
+  </NavLink>
+  <NavLink to={"#"}>
+    My visitors
+  </NavLink>
+  <NavLink to={"#"}>
+    Sign out
+  </NavLink>
+</TopNav> }
   beforeChildren=
     {
       <Breadcrumbs>

@@ -13,8 +13,17 @@ const LoginPage = (props) => (
   <>
   <Page header={
   <TopNav serviceTitle="HMRC-HR">
-    <NavLink to={"/"}>
-      sign in
+    <NavLink to={"/home"} action="true">
+      <b style={{color:"#1d70b8"}}>My profile</b>
+    </NavLink>
+    <NavLink to={"/employees"}>
+      My employees
+    </NavLink>
+    <NavLink to={"#"}>
+      My visitors
+    </NavLink>
+    <NavLink to={"#"}>
+      Sign out
     </NavLink>
   </TopNav> }
   beforeChildren=
