@@ -8,9 +8,12 @@ workflows:
     jobs:
       - node/test:
           version: 15.0.1
-      - heroku/deploy-via-git:
-          requires:
+      - deploy:
+          requires: 
             - node/test
-          force: true
-
-            
+          executor:
+            heroku/default
+          steps:
+            - checkout
+            - heroku/install
+            - heroku/deploy-via-git
