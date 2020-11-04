@@ -11,7 +11,6 @@ workflows:
       - heroku/deploy-via-git:
           requires:
             - node/test
-          parameters:
-            force: true
+          force: true
 
             
