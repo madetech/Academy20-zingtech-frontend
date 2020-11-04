@@ -14,6 +14,7 @@ import Table from '@govuk-react/table';
 import LoginPage from './pages/LoginPage'
 import MyProfilePage from './pages/MyProfilePage'
 import MyEmployeesPage from './pages/MyEmployeesPage'
+import CreateNewEmployeePage from './pages/CreateNewEmployeePage'
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route exact path="/employees">
           <MyEmployeesPage /> 
+        </Route>
+        <Route exact path="/createemployee">
+          <CreateNewEmployeePage /> 
         </Route>
       
         <Footer meta={
