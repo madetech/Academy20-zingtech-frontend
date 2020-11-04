@@ -5,17 +5,52 @@ import { Link } from "react-router-dom";
 import Page from '@govuk-react/page';
 import MUIDataTable from "mui-datatables";
 
+import APIGateway from "../APIGateway.js"
+
 const NavLink = asNavLinkAnchor(Link);
 
-const columns = ["Name", "Company", "City", "State"];
-
-const data = [
-    ["Joe James", "Test Corp", "Yonkers", "NY"],
-    ["John Walsh", "Test Corp", "Hartford", "CT"],
-    ["Bob Herm", "Test Corp", "Tampa", "FL"],
-    ["James Houston", "Test Corp", "Dallas", "TX"],
-];
-
+// const columns = ["Name", "Company", "City", "State"];
+const columns = [
+  {
+   name: "id",
+   label: "Employee ID",
+   options: {
+    filter: true,
+    sort: true,
+   }
+  },
+  {
+   name: "first_name",
+   label: "First Name",
+   options: {
+    filter: true,
+    sort: false,
+   }
+  },
+  {
+   name: "last_name",
+   label: "Last Name",
+   options: {
+    filter: true,
+    sort: false,
+   }
+  },
+  {
+   name: "employee_type",
+   label: "Employee Type",
+   options: {
+    filter: true,
+    sort: false,
+   }
+  },
+ ];
+const data = APIGateway.get_employees();
+// const data = [
+//   ["Joe James", "Test Corp", "Yonkers", "NY"],
+//   ["John Walsh", "Test Corp", "Hartford", "CT"],
+//   ["Bob Herm", "Test Corp", "Tampa", "FL"],
+//   ["James Houston", "Test Corp", "Dallas", "TX"],
+//  ];
 const options = {
     filterType: 'checkbox',
 };
