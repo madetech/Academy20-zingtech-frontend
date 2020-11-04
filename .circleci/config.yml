@@ -13,8 +13,10 @@ jobs:
       - heroku/deploy-via-git
 
 workflows:
-  test_and_deploy:
+  test:
     jobs:
       - node/test:
           version: 15.0.1
+  deploy:
+    jobs:
       - deploy
