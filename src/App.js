@@ -13,7 +13,7 @@ import Table from '@govuk-react/table';
 // Our components 
 import LoginPage from './pages/LoginPage'
 import MyProfilePage from './pages/MyProfilePage'
-
+import MyEmployeesPage from './pages/MyEmployeesPage'
 
 function App() {
   return (
@@ -25,8 +25,10 @@ function App() {
         <Route exact path ="/home">
           <MyProfilePage />
         </Route>
-        
-
+        <Route exact path="/employees">
+          <MyEmployeesPage /> 
+        </Route>
+      
         <Footer meta={
             <Footer.MetaCustom>
               Built by the Bristol ZingTech as a learning experience
