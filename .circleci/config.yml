@@ -1,19 +1,24 @@
+version: 2.1
+
 orbs:
   heroku: circleci/heroku@1.2.3
   node: circleci/node@2.0.2
   
-version: 2.1
-workflows:
-  test-and-deploy:
-    jobs:
+jobs:
+  test:
+    executor: node/default
+    steps: 
       - node/test:
           version: 15.0.1
-      - deploy:
-          requires: 
-            - node/test
-          executor:
-            heroku/default
-          steps:
-            - checkout
-            - heroku/install
-            - heroku/deploy-via-git
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
+
+workflows:
+  test_and_deploy:
+    jobs:
+      - test
+      - deploy
