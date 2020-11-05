@@ -1,4 +1,3 @@
-
 import InputField from '@govuk-react/input-field';
 import Button from '@govuk-react/button';
 import Link from '@govuk-react/link';
@@ -21,7 +20,7 @@ const Login = (props) => (
         'Click here to reset your password',
         <br />,
       ]}
-      type="password"
+      input={{type: "password"}}
     >
       Password
     </InputField>
