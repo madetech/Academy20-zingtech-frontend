@@ -4,6 +4,7 @@ import TopNav, { asNavLinkAnchor } from '@govuk-react/top-nav';
 import { Link } from "react-router-dom";
 import Page from '@govuk-react/page';
 import MUIDataTable from "mui-datatables";
+import Button from '@govuk-react/button';
 
 import APIGateway from "../APIGateway.js"
 
@@ -22,7 +23,7 @@ const columns = [
    name: "first_name",
    label: "First Name",
    options: {
-    filter: true,
+    filter: false,
     sort: false,
    }
   },
@@ -81,6 +82,8 @@ const MyEmployeesPage = (props) => (
     columns={columns} 
     options={options} 
     />
+    <br/>
+    <Link href="/createemployee"><Button>Create new employee</Button></Link>
   </Page>
 </>
 );

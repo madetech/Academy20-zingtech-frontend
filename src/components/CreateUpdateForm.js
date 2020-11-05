@@ -7,6 +7,7 @@ import Select from '@govuk-react/select';
 import TextArea from '@govuk-react/text-area';
 import React from 'react';
 import Panel from '@govuk-react/panel';
+import { Link } from "react-router-dom";
 
 class CreateUpdateForm extends React.Component {
   constructor(props) {
@@ -20,8 +21,6 @@ class CreateUpdateForm extends React.Component {
 
     })
   }
-
-  
 
   render = () => { 
 
@@ -67,12 +66,10 @@ class CreateUpdateForm extends React.Component {
         <InputField name="office_location">Office location</InputField><br/>
         </Fieldset>
 
-        <Button>Submit employee details</Button>
+        <Link href="/employees"><Button>Submit employee details</Button></Link>
 
 </>
   }
-
-
 }
 
 export default CreateUpdateForm;
