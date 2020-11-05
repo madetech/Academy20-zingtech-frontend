@@ -1,7 +1,7 @@
 import Heading from '@govuk-react/heading';
 import Breadcrumbs from '@govuk-react/breadcrumbs';
 import TopNav, { asNavLinkAnchor } from '@govuk-react/top-nav';
-import { Link } from "react-router-dom";
+import Link from '@govuk-react/link';
 import Page from '@govuk-react/page';
 
 import CreateUpdateForm from '../components/CreateUpdateForm'

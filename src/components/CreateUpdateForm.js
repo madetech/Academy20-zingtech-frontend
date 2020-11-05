@@ -7,7 +7,7 @@ import Select from '@govuk-react/select';
 import TextArea from '@govuk-react/text-area';
 import React from 'react';
 import Panel from '@govuk-react/panel';
-import { Link } from "react-router-dom";
+import Link from '@govuk-react/link';
 
 class CreateUpdateForm extends React.Component {
   constructor(props) {
