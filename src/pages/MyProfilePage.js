@@ -9,7 +9,7 @@ import Profile from '../components/Profile'
 
 const NavLink = asNavLinkAnchor(Link);
 
-const LoginPage = (props) => (
+const MyProfilePage = (props) => (
   <>
   <Page header={
   <TopNav serviceTitle="HMRC-HR">
@@ -40,4 +40,4 @@ const LoginPage = (props) => (
 </>
 );
 
-export default LoginPage;
+export default MyProfilePage;
