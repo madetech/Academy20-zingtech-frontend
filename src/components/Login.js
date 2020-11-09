@@ -4,7 +4,7 @@ import Link from '@govuk-react/link';
 
 const Login = (props) => (
   <>
-    <InputField    
+    <InputField
       name="emailaddress"
       hint={[
         'Your @gov.uk email address',
@@ -14,7 +14,7 @@ const Login = (props) => (
       Email address
     </InputField>
     <br/>
-    <InputField    
+    <InputField
       name="Password"
       hint={[
         'Click here to reset your password',
