@@ -1,3 +1,4 @@
+import { ContactsOutlined } from "@material-ui/icons";
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
@@ -20,10 +21,12 @@ afterEach(() => {
 
 it("Login component text exists", () => {
   act(() => {
-    render(<Login homepage="/home"/>, container);
+    render(<Login homepage="/home" id='testLogin'/>, container);
   });
-  expect(container.textContent).toContain("Email address");
-  expect(container.textContent).toContain("Password");
-  expect(container.textContent).toContain("Your @gov.uk email address");
-  expect(container.textContent).toContain("Login");
+  // console.log(container);
+  const email = document.getElementById('emailAddress');
+  expect(email.textContent).toContain("Email address");
+  expect(document.getElementById('password').textContent).toContain("Password");
+  expect(document.getElementById('emailAddress').textContent).toContain("Your @gov.uk email address");
+  expect(document.getElementById('loginButton').textContent).toContain("Login");
 });
