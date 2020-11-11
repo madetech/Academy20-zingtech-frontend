@@ -6,36 +6,24 @@ import Page from '@govuk-react/page';
 
 // Our components 
 import Profile from '../components/Profile'
+import LoggedInTopNav from '../components/LoggedInTopNav'
 
 const NavLink = asNavLinkAnchor(Link);
 
 const MyProfilePage = (props) => (
   <>
   <Page header={
-  <TopNav serviceTitle="HMRC-HR">
-    <NavLink to={"/home"} action="true">
-      <b style={{color:"#1d70b8"}}>My profile</b>
-    </NavLink>
-    <NavLink to={"/employees"}>
-      My employees
-    </NavLink>
-    <NavLink to={"#"}>
-      My visitors
-    </NavLink>
-    <NavLink to={"#"}>
-      Sign out
-    </NavLink>
-  </TopNav> }
+  <LoggedInTopNav highlighted="myProfileTopNav"/> }
   beforeChildren=
     {
-      <Breadcrumbs>
-        <Breadcrumbs.Link href="/">HMRC-HR</Breadcrumbs.Link>
-       My Profile
+      <Breadcrumbs id='myProfileBreadcrumbs'>
+        <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
+        My Profile
       </Breadcrumbs>
     }
   >
     <Heading>My Profile</Heading>
-    <Profile />
+    {/* <Profile /> */}
   </Page>
 </>
 );
