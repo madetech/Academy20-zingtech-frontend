@@ -23,11 +23,9 @@ it("Login component text exists", () => {
   act(() => {
     render(<Login homepage="/home" id='testLogin'/>, container);
   });
-  // console.log(container);
-  const email = document.getElementById('emailAddress');
-  expect(email.textContent).toContain("Email address");
-  expect(document.getElementById('password').textContent).toContain("Password");
+  expect(document.getElementById('emailAddress').textContent).toContain("Email address");
   expect(document.getElementById('emailAddress').textContent).toContain("Your @gov.uk email address");
+  expect(document.getElementById('password').textContent).toContain("Password");
   expect(document.getElementById('loginButton').textContent).toContain("Login");
 });
 

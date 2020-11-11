@@ -5,7 +5,7 @@ import Link from '@govuk-react/link';
 const Login = (props) => (
   <div id='thislogincomp'>
     <InputField
-      id='emailAddress'
+      id="emailAddress"
       name="emailaddress"
       hint={[
         'Your @gov.uk email address',
@@ -16,7 +16,7 @@ const Login = (props) => (
     </InputField>
     <br/>
     <InputField
-    id='password'
+      id="password"
       name="Password"
       hint={[
         'Click here to reset your password',
@@ -27,7 +27,7 @@ const Login = (props) => (
       Password
     </InputField>
     <br/>
-    <Link href={props.homepage}><Button id='loginButton'>Login</Button></Link>
+    <Link href={props.homepage}><Button id="loginButton">Login</Button></Link>
   </div>
 );
 
