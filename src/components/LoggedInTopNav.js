@@ -45,26 +45,13 @@ class LoggedInNav extends React.Component {
     render = () => {
     return <TopNav id='loggedInTopNav' serviceTitle="HMRC-HR">
         {headerLinksInfo.map(headerLink =>(
-            <NavLink to={headerLink.to} id={headerLink.id} style={{color : "#1d70b8"}}>
+            <NavLink 
+            to={headerLink.to} 
+            id={headerLink.id} 
+            style={ headerLink.id === this.props.highlighted? {color : "#1d70b8"} : {color: "rgb(255, 255, 255)"}}>
                 {headerLink.text}
             </NavLink>
         ))}
-
-        {/* <NavLink to={"/"} id='homeTopNav'>
-            Home
-        </NavLink>
-        <NavLink to={"/home"} id='myProfileTopNav' style={{color : "#1d70b8"}}>
-            My profile
-        </NavLink>
-        <NavLink to={"/employees"}>
-            My employees
-        </NavLink>
-        <NavLink to={"#"}>
-            My visitors
-        </NavLink>
-        <NavLink to={"#"}>
-            Sign out
-        </NavLink> */}
     </TopNav>
     }
 };
