@@ -42,3 +42,4 @@ xit("Topnav sign in link works", () => {
     });
 });
 
+//Test other topnav links
