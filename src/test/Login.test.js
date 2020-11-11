@@ -30,3 +30,20 @@ it("Login component text exists", () => {
   expect(document.getElementById('emailAddress').textContent).toContain("Your @gov.uk email address");
   expect(document.getElementById('loginButton').textContent).toContain("Login");
 });
+
+xit("Clicking login button takes user to homepage if email and are password correct", () => {
+
+})
+
+xit("Pressing enter in email/password takes user to homepage if email and are password correct", () => {
+
+})
+
+xit("Login button DOES SOMETHING if email and password are incorrect", () => {
+  
+})
+
+
+xit("Pressing enter in email/password DOES SOMETHING if email and password are incorrect", () => {
+
+})

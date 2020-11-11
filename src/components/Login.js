@@ -3,7 +3,7 @@ import Button from '@govuk-react/button';
 import Link from '@govuk-react/link';
 
 const Login = (props) => (
-  <>
+  <div id='thislogincomp'>
     <InputField
       id='emailAddress'
       name="emailaddress"
@@ -28,7 +28,7 @@ const Login = (props) => (
     </InputField>
     <br/>
     <Link href={props.homepage}><Button id='loginButton'>Login</Button></Link>
-  </>
+  </div>
 );
 
 export default Login;

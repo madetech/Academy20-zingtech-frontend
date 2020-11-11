@@ -33,7 +33,7 @@ const LoginPage = (props) => (
     }
   >
     <Heading>Login</Heading>
-    <Login homepage="/home"/>
+    <Login homepage="/home" />
   </Page>
 </>
 );
