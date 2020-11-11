@@ -34,3 +34,16 @@ it("LoggedInTopNav contains home link", () => {
     });
     expect(document.getElementById('loggedInTopNav')).toContainElement(document.getElementById("homeNavLink"));
   });
+
+  xit("LoggedInTopNav links redirect to correct location when clicked", () => {
+    act(() => {
+      render(<BrowserRouter><LoggedInTopNav highlighted='myProfileTopNav'/></BrowserRouter>, container) ;
+    });
+  });
+
+  it("LoggedInTopNav link to variable page is highlighted", () => {
+    act(() => {
+      render(<BrowserRouter><LoggedInTopNav highlighted='myProfileTopNav'/></BrowserRouter>, container) ;
+    });
+    expect(document.getElementById('myProfileTopNav')).toHaveStyle({color: "#1d70b8"});
+  });
