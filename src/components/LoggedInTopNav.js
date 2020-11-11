@@ -18,7 +18,7 @@ class LoggedInNav extends React.Component {
         <NavLink to={"/"} id='homeNavLink'>
             Home
         </NavLink>
-        <NavLink to={"/home"} id='myProfileTopNav' action="true" style={{color : "#1d70b8"}}>
+        <NavLink to={"/home"} id='myProfileTopNav' style={{color : "#1d70b8"}}>
             My profile
         </NavLink>
         <NavLink to={"/employees"}>
