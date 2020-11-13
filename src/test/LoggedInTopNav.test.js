@@ -1,3 +1,4 @@
+import { Done } from "@material-ui/icons";
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
@@ -62,5 +63,4 @@ it("LoggedInTopNav contains home link", () => {
       render(<BrowserRouter><LoggedInTopNav highlighted='homeTopNav'/></BrowserRouter>, container) ;
     });
     expect(document.getElementById('homeTopNav')).toContainHTML('href="/"');
-    // expect(document.getElementById('homeTopNav')).toHaveStyle({color: "#1d70b8"});
   }); 
