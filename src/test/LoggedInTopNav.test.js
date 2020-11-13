@@ -56,3 +56,11 @@ it("LoggedInTopNav contains home link", () => {
     expect(document.getElementById('myProfileTopNav')).toHaveStyle({color: "rgb(255, 255, 255)"});
     expect(document.getElementById('homeTopNav')).toHaveStyle({color: "#1d70b8"});
   });
+
+  it("LoggedInTopNav contains links to appropriate pages", () => {
+    act(() => {
+      render(<BrowserRouter><LoggedInTopNav highlighted='homeTopNav'/></BrowserRouter>, container) ;
+    });
+    expect(document.getElementById('homeTopNav')).toContainHTML('href="/"');
+    // expect(document.getElementById('homeTopNav')).toHaveStyle({color: "#1d70b8"});
+  }); 

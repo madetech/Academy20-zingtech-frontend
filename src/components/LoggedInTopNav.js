@@ -7,6 +7,7 @@ import React from 'react';
 
 // Our components 
 import Profile from '../components/Profile'
+import { IndeterminateCheckBoxTwoTone } from '@material-ui/icons';
 
 const NavLink = asNavLinkAnchor(Link);
 
@@ -41,8 +42,8 @@ const headerLinksInfo = [
 class LoggedInNav extends React.Component {
     render = () => {
     return <TopNav id='loggedInTopNav' serviceTitle="HMRC-HR">
-        {headerLinksInfo.map(headerLink =>(
-            <NavLink 
+        {headerLinksInfo.map((headerLink,index) =>(
+            <NavLink key={index}
             to={headerLink.to} 
             id={headerLink.id} 
             style={headerLink.id === this.props.highlighted? {color : "#1d70b8"} : {color: "rgb(255, 255, 255)"}}>
