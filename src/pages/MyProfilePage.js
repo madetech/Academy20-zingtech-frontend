@@ -23,7 +23,7 @@ const MyProfilePage = (props) => (
     }
   >
     <Heading>My Profile</Heading>
-    {/* <Profile /> */}
+    {<Profile />}
   </Page>
 </>
 );
