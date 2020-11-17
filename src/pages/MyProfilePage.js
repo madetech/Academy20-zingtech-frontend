@@ -11,21 +11,21 @@ import LoggedInTopNav from '../components/LoggedInTopNav'
 const NavLink = asNavLinkAnchor(Link);
 
 const MyProfilePage = (props) => (
-  <>
-  <Page header={
-  <LoggedInTopNav highlighted="myProfileTopNav"/> }
-  beforeChildren=
-    {
-      <Breadcrumbs id='myProfileBreadcrumbs'>
-        <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-        My Profile
-      </Breadcrumbs>
-    }
-  >
-    <Heading>My Profile</Heading>
-    {<Profile />}
-  </Page>
-</>
+  <div id="myProfilePage">
+    <Page header={
+    <LoggedInTopNav highlighted="myProfileTopNav"/> }
+    beforeChildren=
+      {
+        <Breadcrumbs id='myProfileBreadcrumbs'>
+          <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
+          My Profile
+        </Breadcrumbs>
+      }
+    >
+      <Heading>My Profile</Heading>
+      {<Profile />}
+    </Page>
+  </div>
 );
 
 export default MyProfilePage;
