@@ -32,10 +32,3 @@ it("MyVisitors page contains navigation elements", () => {
     });
     expect(document.getElementById('loggedInTopNav')).toBeVisible();
 });
-
-it("MyVisitors ", () => {
-    act(() => {
-        render(<Router><MyVisitorsPage/></Router>, container);
-    });
-    expect(document.getElementById('loggedInTopNav')).toBeVisible();
-});
