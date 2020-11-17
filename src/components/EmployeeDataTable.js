@@ -1,10 +1,15 @@
 import React from 'react'
 import MUIDataTable from "mui-datatables";
+import Button from '@govuk-react/button';
+import Link from '@govuk-react/link';
 
 function EmployeeDataTable({data, loading}) {
 
   const options = {
-    filterType: 'checkbox',
+    filter: false,
+    selectableRowsHideCheckboxes: true,
+    selectableRowsHeader: false,
+    selectableRowsOnClick: true
   };
   const columns = [
     {
@@ -37,6 +42,21 @@ function EmployeeDataTable({data, loading}) {
     options: {
       filter: true,
       sort: false,
+      }
+    },
+    {
+      name: "Edit",
+      options: {
+        filter: false,
+        sort: false,
+        empty: true,
+        customBodyRenderLite: (dataIndex, rowIndex) => {
+          return (
+            <Link href={`/employeedata/${data[dataIndex].id}`}><Button onClick={() => window.alert(`Clicked "Edit" for row ${rowIndex} with dataIndex of ${data[dataIndex].id}`)}>
+              Edit
+            </Button></Link>
+          );
+        }
       }
     },
   ];
