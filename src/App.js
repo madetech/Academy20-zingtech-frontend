@@ -16,6 +16,7 @@ import MyProfilePage from './pages/MyProfilePage'
 import MyEmployeesPage from './pages/MyEmployeesPage'
 import CreateNewEmployeePage from './pages/CreateNewEmployeePage'
 import EmployeeDataPage from './pages/EmployeeDataPage'
+import MyVisitorsPage from './pages/MyVisitorsPage'
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
         <Route path={`/employeedata/:employeeId`}>
           <EmployeeDataPage />
         </Route>
+        <Route exact path="/visitors">
+          <MyVisitorsPage />
+        </Route>
+      
         <Footer meta={
             <Footer.MetaCustom>
               Built by the Bristol ZingTech as a learning experience
