@@ -35,24 +35,17 @@ it("LoggedInTopNav contains home link", () => {
     expect(document.getElementById('loggedInTopNav')).toContainElement(document.getElementById("homeTopNav"));
   });
 
-  xit("LoggedInTopNav links redirect to correct location when clicked", () => {
-    act(() => {
-      render(<BrowserRouter><LoggedInTopNav highlighted='myProfileTopNav'/></BrowserRouter>, container) ;
-    });
+it("LoggedInTopNav link to variable page (myProfileTopNav) is highlighted", () => {
+  act(() => {
+    render(<BrowserRouter><LoggedInTopNav highlighted='myProfileTopNav'/></BrowserRouter>, container) ;
   });
+  expect(document.getElementById('myProfileTopNav')).toHaveStyle({color: "#1d70b8"});
+  expect(document.getElementById('homeTopNav')).toHaveStyle({color: "rgb(255, 255, 255)"});
+});
 
-  it("LoggedInTopNav link to variable page (myProfileTopNav) is highlighted", () => {
-    act(() => {
-      render(<BrowserRouter><LoggedInTopNav highlighted='myProfileTopNav'/></BrowserRouter>, container) ;
-    });
-    expect(document.getElementById('myProfileTopNav')).toHaveStyle({color: "#1d70b8"});
-    expect(document.getElementById('homeTopNav')).toHaveStyle({color: "rgb(255, 255, 255)"});
+it("LoggedInTopNav link to Visitors page (visitorsTopNav) is highlighted", () => {
+  act(() => {
+    render(<BrowserRouter><LoggedInTopNav highlighted='homeTopNav'/></BrowserRouter>, container) ;
   });
-
-  it("LoggedInTopNav link to variable page (homeTopNav) is highlighted", () => {
-    act(() => {
-      render(<BrowserRouter><LoggedInTopNav highlighted='homeTopNav'/></BrowserRouter>, container) ;
-    });
-    expect(document.getElementById('myProfileTopNav')).toHaveStyle({color: "rgb(255, 255, 255)"});
-    expect(document.getElementById('homeTopNav')).toHaveStyle({color: "#1d70b8"});
-  });
+  expect(document.getElementById('visitorsTopNav')).toHaveStyle({color: "#1d70b8"});
+});

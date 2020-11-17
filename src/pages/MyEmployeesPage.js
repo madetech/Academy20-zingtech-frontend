@@ -64,8 +64,6 @@ const data = [
   }
 ]
 
-
-
 function MyEmployeesPage(props) {
 
   const [employeeData, setEmployeeData] = useState([])
@@ -80,8 +78,6 @@ function MyEmployeesPage(props) {
     })
   }, [])
   
-
-
   return (
     <>
       <Page header={<LoggedInTopNav highlighted='employeesTopNav' />}
