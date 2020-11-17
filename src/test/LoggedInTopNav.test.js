@@ -45,7 +45,7 @@ it("LoggedInTopNav link to variable page (myProfileTopNav) is highlighted", () =
 
 it("LoggedInTopNav link to Visitors page (visitorsTopNav) is highlighted", () => {
   act(() => {
-    render(<BrowserRouter><LoggedInTopNav highlighted='homeTopNav'/></BrowserRouter>, container) ;
+    render(<BrowserRouter><LoggedInTopNav highlighted='visitorsTopNav'/></BrowserRouter>, container) ;
   });
   expect(document.getElementById('visitorsTopNav')).toHaveStyle({color: "#1d70b8"});
 });
