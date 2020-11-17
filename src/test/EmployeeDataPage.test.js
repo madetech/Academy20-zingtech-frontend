@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-import EmployeeDataPage from '../pages/EmployeeDataPage'
+import EmployeeDataPage from "../pages/EmployeeDataPage";
 
 let container = null;
 beforeEach(() => {
@@ -21,9 +21,62 @@ afterEach(() => {
 
 it("EmployeeDataPage contains HMRC-HR", () => {
   act(() => {
-    render(<BrowserRouter><EmployeeDataPage/></BrowserRouter>, container) ;
+    render(
+      <BrowserRouter>
+        <EmployeeDataPage />
+      </BrowserRouter>,
+      container
+    );
   });
-  console.log(document.getElementById('loggedInTopNav'))
-  expect(document.getElementById('loggedInTopNav').textContent).toContain("HMRC-HR");
+  expect(document.getElementById("loggedInTopNav").textContent).toContain(
+    "HMRC-HR"
+  );
 });
 
+it("EmployeeDataPage breadcrumbs contain hmrc", () => {
+  act(() => {
+    render(
+      <BrowserRouter>
+        <EmployeeDataPage />
+      </BrowserRouter>,
+      container
+    );
+  });
+  expect(document.getElementById("homePageBreadcrumb").textContent).toContain(
+    "HMRC-HR"
+  );
+  expect(document.getElementById("homePageBreadcrumb")).toHaveAttribute(
+    "href",
+    "/"
+  );
+});
+
+it("EmployeeDataPage breadcrumbs contain employees", () => {
+  act(() => {
+    render(
+      <BrowserRouter>
+        <EmployeeDataPage />
+      </BrowserRouter>,
+      container
+    );
+  });
+  expect(document.getElementById("employeesBreadcrumb").textContent).toContain(
+    "My Employees"
+  );
+  expect(document.getElementById("employeesBreadcrumb")).toHaveAttribute(
+    "href",
+    "/employees"
+  );
+});
+
+it("EmployeeDataPage table contain employees", () => {
+  act(() => {
+    render(
+      <BrowserRouter>
+        <EmployeeDataPage />
+      </BrowserRouter>,
+      container
+    );
+  });
+  expect(document.getElementById("firstNameCell")).not.toBeNull();
+});
