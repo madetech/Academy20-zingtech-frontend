@@ -73,7 +73,7 @@ function MyEmployeesPage(props) {
 
   useEffect(() => {
     setLoading(true)
-    axios.get('https://zingtech-backend.herokuapp.com/api/employeedata')
+    axios.get('https://cors-anywhere.herokuapp.com/https://zingtech-backend.herokuapp.com/api/employeedata')
     .then(res => {
       setLoading(false)
       setEmployeeData(res.data)
