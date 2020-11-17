@@ -27,7 +27,7 @@ const headerLinksInfo = [
         text: "My employees"
     },
     {
-        to: "#",
+        to: "/visitors",
         id: "visitorsTopNav",
         text: "My visitors"
     },
