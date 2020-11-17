@@ -69,7 +69,7 @@ it("EmployeeDataPage breadcrumbs contain employees", () => {
   );
 });
 
-it("EmployeeDataPage table contain employees", () => {
+it("EmployeeDataPage table exists", () => {
   act(() => {
     render(
       <BrowserRouter>
@@ -78,5 +78,5 @@ it("EmployeeDataPage table contain employees", () => {
       container
     );
   });
-  expect(document.getElementById("firstNameCell")).not.toBeNull();
+  expect(document.getElementById("employeeDataTable")).not.toBeNull();
 });

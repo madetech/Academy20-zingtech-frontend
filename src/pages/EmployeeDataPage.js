@@ -17,6 +17,19 @@ function EmployeeDataPage() {
   // get from `useParams()`.
   let { employeeId } = useParams();
 
+  const [employeeData, setEmployeeData] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    axios.get(`/api/employeedata/${employeeId}`)
+    .then(res => {
+      setLoading(false)
+      setEmployeeData(res.data)
+    })
+  }, [])
+
+  if (loading) return "Loading..."
   return (
     <div>
       <Page
@@ -29,18 +42,27 @@ function EmployeeDataPage() {
             <Breadcrumbs.Link id="employeesBreadcrumb" href="/employees">
               My Employees
             </Breadcrumbs.Link>
-            !!!!!!********EmployeeName****!!!!!
+            {`${employeeData.firstName} ${employeeData.email}`}
           </Breadcrumbs>
         }
       >
-        <Table>
-          <Table.RowHeader>
-            <Table.Cell>First 6 weeks</Table.Cell>
-            <Table.Cell>£10.80 per week</Table.Cell>
-          </Table.RowHeader>
+        <Heading>Employee Details</Heading>
+        <Table id="employeeDataTable" >
           <Table.Row>
-            <Table.Cell>First 6 weeks</Table.Cell>
-            <Table.Cell>£10.80 per week</Table.Cell>
+            <Table.CellHeader>Employee ID</Table.CellHeader>
+            <Table.Cell>{employeeData.id}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.CellHeader>First Name</Table.CellHeader>
+            <Table.Cell>{employeeData.firstName}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.CellHeader>Last Name</Table.CellHeader>
+            <Table.Cell>{employeeData.lastName}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.CellHeader>Email Address</Table.CellHeader>
+            <Table.Cell>{employeeData.email}</Table.Cell>
           </Table.Row>
         </Table>
       </Page>
