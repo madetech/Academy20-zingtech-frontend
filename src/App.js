@@ -15,6 +15,7 @@ import LoginPage from './pages/LoginPage'
 import MyProfilePage from './pages/MyProfilePage'
 import MyEmployeesPage from './pages/MyEmployeesPage'
 import CreateNewEmployeePage from './pages/CreateNewEmployeePage'
+import MyVisitorsPage from './pages/MyVisitorsPage'
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route exact path="/createemployee">
           <CreateNewEmployeePage /> 
+        </Route>
+        <Route exact path="/visitors">
+          <MyVisitorsPage />
         </Route>
       
         <Footer meta={
