@@ -18,15 +18,30 @@ function EmployeeDataPage() {
   let { employeeId } = useParams();
 
   const [employeeData, setEmployeeData] = useState([]);
+  const [employeeManager, setEmployeeManager] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/api/employeedata/${employeeId}`).then((res) => {
-      setLoading(false);
-      setEmployeeData(res.data);
-    });
+    axios
+      .get(
+        `https://zingtech-backend.herokuapp.com/api/employeedata/${employeeId}`
+      )
+      .then((res) => {
+        setEmployeeData(res.data);
+      });
   }, []);
+  useEffect(() => {
+    const managerId = employeeData.manager;
+    axios
+      .get(
+        `https://zingtech-backend.herokuapp.com/api/employeedata/${managerId}`
+      )
+      .then((res) => {
+        setLoading(false);
+        setEmployeeManager(res.data);
+      });
+  }, [employeeData]);
 
   return (
     <div>
@@ -45,7 +60,11 @@ function EmployeeDataPage() {
         }
       >
         <Heading>Employee Details</Heading>
-        <EmployeeDetails employeeData={employeeData} loading={loading} />
+        <EmployeeDetails
+          employeeData={employeeData}
+          loading={loading}
+          employeeManager={employeeManager}
+        />
       </Page>
     </div>
   );

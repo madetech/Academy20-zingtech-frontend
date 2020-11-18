@@ -1,96 +1,87 @@
-import React from 'react'
+import React from "react";
 
-import Button from '@govuk-react/button';
-import Link from '@govuk-react/link';
+import Button from "@govuk-react/button";
+import Link from "@govuk-react/link";
 
 import MUIDataTable from "mui-datatables";
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
-function EmployeeDataTable({data, loading}) {
-
+function EmployeeDataTable({ data, loading }) {
   const options = {
     filter: false,
     selectableRowsHideCheckboxes: true,
     selectableRowsHeader: false,
-    selectableRowsOnClick: false
+    selectableRowsOnClick: false,
   };
   const columns = [
     {
-    name: "id",
-    label: "Employee ID",
-    options: {
-      filter: true,
-      sort: true,
-      }
+      name: "id",
+      label: "Employee ID",
+      options: {
+        filter: true,
+        sort: true,
+      },
     },
     {
-    name: "firstName",
-    label: "First Name",
-    options: {
-      filter: false,
-      sort: false,
-      }
+      name: "firstName",
+      label: "First Name",
+      options: {
+        filter: false,
+        sort: false,
+      },
     },
     {
-    name: "lastName",
-    label: "Last Name",
-    options: {
-      filter: true,
-      sort: false,
-      }
+      name: "lastName",
+      label: "Last Name",
+      options: {
+        filter: true,
+        sort: false,
+      },
     },
     {
-    name: "userType",
-    label: "Employee Type",
-    options: {
-      filter: true,
-      sort: false,
-      }
+      name: "userType",
+      label: "Employee Type",
+      options: {
+        filter: true,
+        sort: false,
+      },
     },
     {
-      name: "Edit",
+      name: "",
       options: {
         filter: false,
         sort: false,
         empty: true,
         customBodyRenderLite: (dataIndex, rowIndex) => {
           return (
-            <Link href={`/employeedata/${data[dataIndex].id}`}><Button>
-              Edit
-            </Button></Link>
+            <Link href={`/employeedata/${data[dataIndex].id}`}>
+              <Button>View Details</Button>
+            </Link>
           );
-        }
-      }
+        },
+      },
     },
   ];
 
-  const getMuiTheme = () => createMuiTheme({
-    overrides: {
-      MUIDataTableBodyCell: {
-        root: {
-          fontSize: 18 
-        },
-        head: {
-          fontSize: 18
-        },
-      },
-    }
-  })
+  const theme = createMuiTheme({
+    typography: {
+      fontSize: 18,
+    },
+  });
 
-
-  if (loading) return 'loading...'
+  if (loading) return "loading...";
   return (
     <div>
-      <MuiThemeProvider theme={getMuiTheme()}>
-        <MUIDataTable 
-        title={"Employee List"} 
-        data={data} 
-        columns={columns} 
-        options={options} 
+      <MuiThemeProvider theme={theme}>
+        <MUIDataTable
+          title={"Employee List"}
+          data={data}
+          columns={columns}
+          options={options}
         />
       </MuiThemeProvider>
     </div>
-  )
+  );
 }
 
-export default EmployeeDataTable
+export default EmployeeDataTable;
