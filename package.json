@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
     "govuk-react": "^0.7.2",
+    "http-proxy-middleware": "^0.19.1",
     "mui-datatables": "^3.7.1",
     "react-contenteditable": "^3.3.5",
     "react-router-dom": "^5.2.0",
@@ -51,6 +52,6 @@
     "react-dom": "^16.14.0",
     "react-scripts": "^4.0.0",
     "react-test-renderer": "^16.0.1"
-  },
-  "proxy": "https://zingtech-backend.herokuapp.com/"
   }
+
+}
