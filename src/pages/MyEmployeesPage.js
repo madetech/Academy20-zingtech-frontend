@@ -36,6 +36,7 @@ function MyEmployeesPage(props) {
         </Breadcrumbs>}
       >
         <Heading>My Employees</Heading>
+        
         <EmployeeDataTable data={employeeData} loading={loading} />
         <br />
         <Link href="/createemployee"><Button>Create new employee</Button></Link>
