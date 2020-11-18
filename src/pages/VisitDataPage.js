@@ -23,7 +23,7 @@ function VisitDataPage() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://cors-anywhere.herokuapp.com/https://zingtech-backend.herokuapp.com/api/visitdata/${visitId}`).then((res) => {
+    axios.get(`https://zingtech-backend.herokuapp.com/api/visitdata/${visitId}`).then((res) => {
       setLoading(false);
       setVisitData(res.data);
     });
