@@ -11,8 +11,16 @@ function EmployeeDataTable({ data, loading }) {
     filter: false,
     selectableRowsHideCheckboxes: true,
     selectableRowsHeader: false,
-    selectableRowsOnClick: false,
+    selectableRowsOnClick: true,
+    textLabels: {
+      body: {
+          noMatch: loading ?
+              'Loading...' :
+              'Sorry, there is no matching data to display',
+      }
+    }
   };
+
   const columns = [
     {
       name: "id",
@@ -69,7 +77,6 @@ function EmployeeDataTable({ data, loading }) {
     },
   });
 
-  if (loading) return "loading...";
   return (
     <div>
       <MuiThemeProvider theme={theme}>

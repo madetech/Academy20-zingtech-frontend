@@ -17,6 +17,7 @@ import MyEmployeesPage from './pages/MyEmployeesPage'
 import CreateNewEmployeePage from './pages/CreateNewEmployeePage'
 import EmployeeDataPage from './pages/EmployeeDataPage'
 import MyVisitorsPage from './pages/MyVisitorsPage'
+import VisitDataPage from './pages/VisitDataPage'
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route exact path="/visitors">
           <MyVisitorsPage />
+        </Route>
+        <Route path={`/visitors/:visitId`}>
+          <VisitDataPage />
         </Route>
       
         <Footer meta={

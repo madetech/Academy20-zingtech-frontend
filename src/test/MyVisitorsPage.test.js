@@ -39,3 +39,10 @@ it("MyVisitorsPage contains breadcrumbs", () => {
     });
     expect(document.getElementById('existingVisitBreadcrumbs').textContent).toContain("HomeMy Visitors");
 });
+
+it("MyVisitorsPage contains a VisitDataTable", () => {
+    act(() => {
+        render(<Router><MyVisitorsPage /></Router>, container);
+    });
+    expect(document.getElementById('visitDataTable')).toBeVisible();
+});
