@@ -33,9 +33,9 @@ it("MyVisitors page contains navigation elements", () => {
     expect(document.getElementById('loggedInTopNav')).toBeVisible();
 });
 
-it("MyVisitors ", () => {
+it("MyVisitorsPage contains breadcrumbs", () => {
     act(() => {
         render(<Router><MyVisitorsPage/></Router>, container);
     });
-    expect(document.getElementById('loggedInTopNav')).toBeVisible();
+    expect(document.getElementById('existingVisitBreadcrumbs').textContent).toContain("HomeMy Visitors");
 });

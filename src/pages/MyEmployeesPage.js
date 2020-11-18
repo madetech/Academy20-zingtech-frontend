@@ -10,7 +10,6 @@ import LoggedInTopNav from '../components/LoggedInTopNav';
 
 import EmployeeDataTable from '../components/EmployeeDataTable';
 
-
 function MyEmployeesPage(props) {
 
   const [employeeData, setEmployeeData] = useState([])
@@ -25,8 +24,6 @@ function MyEmployeesPage(props) {
     })
   }, [])
   
-
-
   return (
     <>
       <Page header={<LoggedInTopNav highlighted='employeesTopNav' />}
