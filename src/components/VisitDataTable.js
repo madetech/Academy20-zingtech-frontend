@@ -9,7 +9,7 @@ function VisitDataTable({data, loading}) {
     filter: false,
     selectableRowsHideCheckboxes: true,
     selectableRowsHeader: false,
-    selectableRowsOnClick: true,
+    selectableRowsOnClick: false,
     textLabels: {
       body: {
           noMatch: loading ?
