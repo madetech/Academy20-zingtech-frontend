@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "@govuk-react/table";
 import Link from '@govuk-react/link';
+import Moment from 'react-moment';
 
 export default function VisitDetails({ visitData, loading }) {
   if (loading) return "Loading...";
@@ -21,12 +22,11 @@ export default function VisitDetails({ visitData, loading }) {
         </Table.Row>
         <Table.Row>
           <Table.CellHeader>Start</Table.CellHeader>
-          <Table.Cell>{visitData.visitStartDatetime}</Table.Cell>
-          // "4 June 2017 15:00"
+          <Table.Cell><Moment format="HH:MM" >{visitData.visitStartDatetime}</Moment> on <Moment format="DD MMMM YYYY" >{visitData.visitStartDatetime}</Moment></Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.CellHeader>End</Table.CellHeader>
-          <Table.Cell>{visitData.visitEndDatetime}</Table.Cell>
+          <Table.Cell><Moment format="HH:MM" >{visitData.visitEndDatetime}</Moment> on <Moment format="DD MMMM YYYY" >{visitData.visitEndDatetime}</Moment></Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.CellHeader>Notes</Table.CellHeader>
