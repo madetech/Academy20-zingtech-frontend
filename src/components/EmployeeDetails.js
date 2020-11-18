@@ -2,25 +2,79 @@ import React from "react";
 import Table from "@govuk-react/table";
 
 export default function EmployeeDetails({ employeeData, loading }) {
+
+  const titlesAndIDs = [
+    {
+      rowName: "Employee ID",
+      databaseID: "id"
+    },
+    {
+      rowName: "First Name",
+      databaseID: "firstName"
+    },
+    {
+      rowName: "Last Name",
+      databaseID: "lastName"
+    },
+    {
+      rowName: "Email",
+      databaseID: "email"
+    },
+    {
+      rowName: "Mobile Number",
+      databaseID: "mobileNumber"
+    }, 
+    {
+      rowName: "Address",
+      databaseID: "address"
+    },
+    {
+      rowName: "City",
+      databaseID: "city"
+    },
+    {
+      rowName: "Postcode",
+      databaseID: "postcode"
+    },
+    {
+      rowName: "Next of Kin",
+      databaseID: "nextOfKin"
+    },
+    {
+      rowName: "Next of Kin - contact number",
+      databaseID: "nextOfKinContactNumber"
+    },
+    {
+      rowName: "Salary Band",
+      databaseID: "salaryBand"
+    },
+    {
+      rowName: "Office Location",
+      databaseID: "officeLocation"
+    },
+    {
+      rowName: "Position",
+      databaseID: "position"
+    },
+    {
+      rowName: "User Type",
+      databaseID: "userType"
+    }
+  ]
+
   if (loading) return "Loading...";
   return (
     <div>
       <Table id="employeeDataTable">
-        <Table.Row>
-          <Table.CellHeader>Employee ID</Table.CellHeader>
-          <Table.Cell>{employeeData.id}</Table.Cell>
+      {titlesAndIDs.map(row =>(
+        <Table.Row> 
+          <Table.CellHeader>{row.rowName}</Table.CellHeader>
+          <Table.Cell>{employeeData[row.databaseID]}</Table.Cell>
         </Table.Row>
-        <Table.Row>
-          <Table.CellHeader>First Name</Table.CellHeader>
-          <Table.Cell>{employeeData.firstName}</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.CellHeader>Last Name</Table.CellHeader>
-          <Table.Cell>{employeeData.lastName}</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.CellHeader>Email Address</Table.CellHeader>
-          <Table.Cell>{employeeData.email}</Table.Cell>
+      ))}
+        <Table.Row> 
+          <Table.CellHeader>{"Manager"}</Table.CellHeader>
+          <Table.Cell>FETCH REQUEST</Table.Cell>
         </Table.Row>
       </Table>
     </div>
