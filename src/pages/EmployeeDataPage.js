@@ -5,10 +5,10 @@ import Page from "@govuk-react/page";
 import Button from "@govuk-react/button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Table from "@govuk-react/table";
 
 import LoggedInTopNav from "../components/LoggedInTopNav";
 import { useParams } from "react-router-dom";
+import EmployeeDetails from "../components/EmployeeDetails";
 
 function EmployeeDataPage() {
   // The <Route> that rendered this component has a
@@ -17,19 +17,17 @@ function EmployeeDataPage() {
   // get from `useParams()`.
   let { employeeId } = useParams();
 
-  const [employeeData, setEmployeeData] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [employeeData, setEmployeeData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
-    axios.get(`/api/employeedata/${employeeId}`)
-    .then(res => {
-      setLoading(false)
-      setEmployeeData(res.data)
-    })
-  }, [])
+    setLoading(true);
+    axios.get(`/api/employeedata/${employeeId}`).then((res) => {
+      setLoading(false);
+      setEmployeeData(res.data);
+    });
+  }, []);
 
-  if (loading) return "Loading..."
   return (
     <div>
       <Page
@@ -47,24 +45,7 @@ function EmployeeDataPage() {
         }
       >
         <Heading>Employee Details</Heading>
-        <Table id="employeeDataTable" >
-          <Table.Row>
-            <Table.CellHeader>Employee ID</Table.CellHeader>
-            <Table.Cell>{employeeData.id}</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.CellHeader>First Name</Table.CellHeader>
-            <Table.Cell>{employeeData.firstName}</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.CellHeader>Last Name</Table.CellHeader>
-            <Table.Cell>{employeeData.lastName}</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.CellHeader>Email Address</Table.CellHeader>
-            <Table.Cell>{employeeData.email}</Table.Cell>
-          </Table.Row>
-        </Table>
+        <EmployeeDetails employeeData={employeeData} loading={loading} />
       </Page>
     </div>
   );
