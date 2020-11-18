@@ -41,11 +41,11 @@ function VisitDataPage() {
             <Breadcrumbs.Link id="visitorsBreadcrumb" href="/visitors">
               My Visitors
             </Breadcrumbs.Link>
-            {`${visitData.firstName} ${visitData.email}`}
+            {`${visitData.visitPurpose} (${visitData.visitOfficeLocation})`}
           </Breadcrumbs>
         }
       >
-        <Heading>Visitor Details</Heading>
+        <Heading>Visit Details</Heading>
         <VisitorDetails visitData={visitData} loading={loading} />
       </Page>
     </div>
