@@ -1,7 +1,10 @@
 import React from 'react'
-import MUIDataTable from "mui-datatables";
+
 import Button from '@govuk-react/button';
 import Link from '@govuk-react/link';
+
+import MUIDataTable from "mui-datatables";
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 function EmployeeDataTable({data, loading}) {
 
@@ -60,7 +63,7 @@ function EmployeeDataTable({data, loading}) {
         empty: true,
         customBodyRenderLite: (dataIndex, rowIndex) => {
           return (
-            <Link href={`/employeedata/${data[dataIndex].id}`}><Button onClick={() => window.alert(`Clicked "Edit" for row ${rowIndex} with dataIndex of ${data[dataIndex].id}`)}>
+            <Link href={`/employeedata/${data[dataIndex].id}`}><Button>
               Edit
             </Button></Link>
           );
@@ -69,14 +72,29 @@ function EmployeeDataTable({data, loading}) {
     },
   ];
 
+  const getMuiTheme = () => createMuiTheme({
+    overrides: {
+      MUIDataTableBodyCell: {
+        root: {
+          fontSize: 18 
+        },
+        head: {
+          fontSize: 18
+        },
+      },
+    }
+  })
+
   return (
     <div>
-      <MUIDataTable 
-      title={"Employee List"} 
-      data={data} 
-      columns={columns} 
-      options={options} 
-      />
+      <MuiThemeProvider theme={getMuiTheme()}>
+        <MUIDataTable 
+        title={"Employee List"} 
+        data={data} 
+        columns={columns} 
+        options={options} 
+        />
+      </MuiThemeProvider>
     </div>
   )
 }

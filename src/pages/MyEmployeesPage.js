@@ -10,60 +10,6 @@ import LoggedInTopNav from '../components/LoggedInTopNav';
 
 import EmployeeDataTable from '../components/EmployeeDataTable';
 
-const data = [
-  {
-      "id": 10000,
-      "firstName": "Kristian",
-      "lastName": "O'Kane",
-      "email": "kokane0@ycombinator.com",
-      "mobileNumber": "704-485-9558",
-      "address": "981 Bonner Plaza",
-      "city": "Laholm",
-      "postcode": "312 31",
-      "nextOfKin": null,
-      "nextOfKinContactNumber": "451-117-8526",
-      "salaryBand": 2,
-      "officeLocation": null,
-      "position": "Dental Hygienist",
-      "userType": "employee",
-      "manager": 10001
-  },
-  {
-      "id": 10001,
-      "firstName": "Carlin",
-      "lastName": "Duval",
-      "email": "cduval1@usatoday.com",
-      "mobileNumber": "834-723-6792",
-      "address": "8 Sommers Alley",
-      "city": "Belovo",
-      "postcode": "442070",
-      "nextOfKin": null,
-      "nextOfKinContactNumber": "283-844-3503",
-      "salaryBand": 5,
-      "officeLocation": null,
-      "position": "Quality Control Specialist",
-      "userType": "employee",
-      "manager": 10002
-  },
-  {
-      "id": 10008,
-      "firstName": "Agna",
-      "lastName": "Harbin",
-      "email": "aharbin8@blogtalkradio.com",
-      "mobileNumber": "649-447-7811",
-      "address": "9 Basil Parkway",
-      "city": "Changliu",
-      "postcode": null,
-      "nextOfKin": null,
-      "nextOfKinContactNumber": "333-911-2384",
-      "salaryBand": 4,
-      "officeLocation": null,
-      "position": "Computer Systems Analyst I",
-      "userType": "employee",
-      "manager": 10009
-  }
-]
-
 function MyEmployeesPage(props) {
 
   const [employeeData, setEmployeeData] = useState([])
@@ -71,7 +17,7 @@ function MyEmployeesPage(props) {
 
   useEffect(() => {
     setLoading(true)
-    axios.get('https://cors-anywhere.herokuapp.com/https://zingtech-backend.herokuapp.com/api/employeedata')
+    axios.get('/api/employeedata')
     .then(res => {
       setLoading(false)
       setEmployeeData(res.data)
@@ -87,6 +33,7 @@ function MyEmployeesPage(props) {
         </Breadcrumbs>}
       >
         <Heading>My Employees</Heading>
+        
         <EmployeeDataTable data={employeeData} loading={loading} />
         <br />
         <Link href="/createemployee"><Button>Create new employee</Button></Link>
