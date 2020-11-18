@@ -1,43 +1,29 @@
-import Heading from '@govuk-react/heading';
-import Breadcrumbs from '@govuk-react/breadcrumbs';
-import TopNav, { asNavLinkAnchor } from '@govuk-react/top-nav';
-import Link from '@govuk-react/link';
-import Page from '@govuk-react/page';
+import Heading from "@govuk-react/heading";
+import Breadcrumbs from "@govuk-react/breadcrumbs";
+import Link from "@govuk-react/link";
+import Page from "@govuk-react/page";
 
-import CreateUpdateForm from '../components/CreateUpdateForm'
-
-const NavLink = asNavLinkAnchor(Link);
+import CreateEmployeeForm from "../components/CreateEmployeeForm";
+import LoggedInTopNav from "../components/LoggedInTopNav";
 
 const CreateNewEmployeePage = (props) => (
   <>
-  <Page header={
-  <TopNav serviceTitle="HMRC-HR">
-  <NavLink to={"/home"} action="true">
-    My profile
-  </NavLink>
-  <NavLink to={"/employees"}>
-    <b style={{color:"#1d70b8"}}>My employees</b>
-  </NavLink>
-  <NavLink to={"#"}>
-    My visitors
-  </NavLink>
-  <NavLink to={"#"}>
-    Sign out
-  </NavLink>
-</TopNav> }
-  beforeChildren=
-    {
-      <Breadcrumbs>
-        <Breadcrumbs.Link href="/">HMRC-HR</Breadcrumbs.Link>
-        Add New Employee
-      </Breadcrumbs>
-    }
-  >
-  <Heading>Create new employee</Heading> 
-  <CreateUpdateForm />
-  </Page>
-</>
+    <Page
+      header={<LoggedInTopNav highlighted="employeesTopNav" />}
+      beforeChildren={
+        <Breadcrumbs>
+          <Breadcrumbs.Link href="/">HMRC-HR</Breadcrumbs.Link>
+          <Breadcrumbs.Link id="employeesBreadcrumb" href="/employees">
+            My Employees
+          </Breadcrumbs.Link>
+          Create New Employee
+        </Breadcrumbs>
+      }
+    >
+      <Heading>Create new employee</Heading>
+      <CreateEmployeeForm />
+    </Page>
+  </>
 );
 
 export default CreateNewEmployeePage;
-
