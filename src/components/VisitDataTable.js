@@ -9,7 +9,14 @@ function VisitDataTable({data, loading}) {
     filter: false,
     selectableRowsHideCheckboxes: true,
     selectableRowsHeader: false,
-    selectableRowsOnClick: true
+    selectableRowsOnClick: true,
+    textLabels: {
+      body: {
+          noMatch: loading ?
+              'Loading...' :
+              'Sorry, there is no matching data to display',
+      },
+  },
   };
   const columns = [
     {
@@ -87,9 +94,8 @@ function VisitDataTable({data, loading}) {
     },
   ];
 
-  if (loading) return 'loading...'
   return (
-    <div>
+    <div id="visitDataTable">
       <MUIDataTable 
       title={"Visitor List"} 
       data={data} 
