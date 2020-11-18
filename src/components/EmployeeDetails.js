@@ -66,6 +66,20 @@ export default function EmployeeDetails({
     },
   ];
 
+  function DisplayManager (employeeManager){
+    
+     if (employeeManager != false) return (
+      <Table.Row id="managerRow">
+        <Table.CellHeader>{"Manager"}</Table.CellHeader>
+        <Table.Cell>
+          <Link
+            href={`/employeedata/${employeeManager.id}`}
+          >{`${employeeManager.firstName} ${employeeManager.lastName}`}</Link>
+        </Table.Cell>
+      </Table.Row>
+      )
+  }
+
   if (loading) return "Loading...";
   return (
     <div>
@@ -76,14 +90,7 @@ export default function EmployeeDetails({
             <Table.Cell>{employeeData[row.databaseID]}</Table.Cell>
           </Table.Row>
         ))}
-        <Table.Row>
-          <Table.CellHeader>{"Manager"}</Table.CellHeader>
-          <Table.Cell>
-            <Link
-              href={`/employeedata/${employeeManager.id}`}
-            >{`${employeeManager.firstName} ${employeeManager.lastName}`}</Link>
-          </Table.Cell>
-        </Table.Row>
+        {DisplayManager (employeeManager)}
       </Table>
     </div>
   );

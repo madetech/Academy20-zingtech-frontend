@@ -32,15 +32,21 @@ function EmployeeDataPage() {
       });
   }, []);
   useEffect(() => {
-    const managerId = employeeData.manager;
-    axios
+
+    if (employeeData.manager != null) {
+      axios
       .get(
-        `https://zingtech-backend.herokuapp.com/api/employeedata/${managerId}`
+        `https://zingtech-backend.herokuapp.com/api/employeedata/${employeeData.manager}`
       )
       .then((res) => {
         setLoading(false);
         setEmployeeManager(res.data);
       });
+    } else {
+      setLoading(false)
+      setEmployeeManager(false)
+    }
+    
   }, [employeeData]);
 
   return (
