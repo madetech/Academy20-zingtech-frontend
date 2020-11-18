@@ -3,61 +3,48 @@ import React, { useState, useEffect } from "react";
 import InputField from "@govuk-react/input-field";
 import Fieldset from "@govuk-react/fieldset";
 import DateField from "@govuk-react/date-field";
+import Button from "@govuk-react/button";
+
+const emptyEmployeeObject = {
+  firstName: null,
+  lastName: null
+}
 
 function CreateEmployeeForm() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [employeeObject, setEmployeeObject] = useState(emptyEmployeeObject);
 
   return (
     <div>
-      <form>
-        <div>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-      </form>
-      <Fieldset>
+      <Fieldset id="employeeInformation">
         <Fieldset.Legend>
-          <b>Personal Information</b>
+          <b>Employee Information</b>
         </Fieldset.Legend>
         <InputField
           name="firstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          value={employeeObject.firstName}
+          onChange={(e) => setEmployeeObject({...employeeObject, firstName:e.target.value})}
         >
           First name
         </InputField>
         <br />
         <InputField
           name="lastName"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          value={employeeObject.lastName}
+          onChange={(e) => setEmployeeObject({...employeeObject, lastName:e.target.value})}
         >
           Last name
         </InputField>
         <br />
       </Fieldset>
-      <button
+      <Button
         onClick={() =>
           window.alert(
-            `Clicked "Edit" for row ${firstName} with dataIndex of ${lastName}`
+            `Clicked "Edit" for row ${employeeObject.firstName} with dataIndex of ${employeeObject.lastName}`
           )
         }
       >
-        Edit
-      </button>
+        Create Employee
+      </Button>
     </div>
   );
 }
