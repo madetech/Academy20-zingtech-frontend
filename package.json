@@ -20,7 +20,6 @@
     "react-contenteditable": "^3.3.5",
     "react-moment": "^1.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.0",
     "styled-components": "^4.1.3",
     "web-vitals": "^0.2.4"
   },
