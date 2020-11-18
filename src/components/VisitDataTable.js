@@ -85,7 +85,7 @@ function VisitDataTable({data, loading}) {
         empty: true,
         customBodyRenderLite: (dataIndex, rowIndex) => {
           return (
-            <Link href={`/visitdata/${data[dataIndex].id}`}><Button onClick={() => window.alert(`Clicked "Edit" for row ${rowIndex} with dataIndex of ${data[dataIndex].id}`)}>
+            <Link href={`/visitors/${data[dataIndex].id}`}><Button >
               Edit
             </Button></Link>
           );
