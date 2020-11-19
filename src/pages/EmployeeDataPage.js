@@ -61,7 +61,7 @@ function EmployeeDataPage() {
             <Breadcrumbs.Link id="employeesBreadcrumb" href="/employees">
               My Employees
             </Breadcrumbs.Link>
-            {`${employeeData.firstName} ${employeeData.email}`}
+            {`${employeeData.firstName} ${employeeData.lastName}`}
           </Breadcrumbs>
         }
       >
