@@ -85,9 +85,7 @@ function VisitDataTable({data, loading}) {
         empty: true,
         customBodyRenderLite: (dataIndex, rowIndex) => {
           return (
-            <Link href={`/visitors/${data[dataIndex].id}`}><Button >
-              Edit
-            </Button></Link>
+            <Link href={`/visitors/${data[dataIndex].id}`}><Button>View details</Button></Link>
           );
         }
       }
