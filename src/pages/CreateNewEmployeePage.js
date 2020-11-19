@@ -5,21 +5,22 @@ import Page from "@govuk-react/page";
 
 import CreateEmployeeForm from "../components/CreateEmployeeForm";
 import LoggedInTopNav from "../components/LoggedInTopNav";
-import Axios from "axios";
+import axios from "axios";
 
 function CreateNewEmployeePage() {
   function sendToBackend(newEmployeeData) {
-    Axios.post(
+    console.log(JSON.stringify(newEmployeeData))
+    axios.post(
       "https://zingtech-backend.herokuapp.com/api/employeedata",
-      newEmployeeData
-    ).then(
-      (res) => {
-        console.log(res);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      newEmployeeData,{
+      headers: {"Access-Control-Allow-Origin": "*"}}
+    ).then((response) => {
+      console.log(response.data);
+      console.log(response.status);
+      console.log(response.statusText);
+      console.log(response.headers);
+      console.log(response.config);
+    });
   }
 
   return (

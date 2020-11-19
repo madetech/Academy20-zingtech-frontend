@@ -4,22 +4,24 @@ import InputField from "@govuk-react/input-field";
 import Fieldset from "@govuk-react/fieldset";
 import DateField from "@govuk-react/date-field";
 import Button from "@govuk-react/button";
+import Select from '@govuk-react/select';
 
 const emptyEmployeeObject = {
-  firstName: null,
-  lastName: null,
-  email: null,
-  mobileNumber: null,
-  address: null,
-  city: null,
-  postcode: null,
-  nextOfKinName: null,
-  nextOfKinContactNumber: null,
-  salaryBand: null,
-  officeLocation: null,
-  position: null,
-  userType: null,
-  manager: null,
+  "id":7005,
+  "firstName": null,
+  "lastName": null,
+  "email": null,
+  "mobileNumber": null,
+  "address": null,
+  "city": null,
+  "postcode": null,
+  "nextOfKinName": null,
+  "nextOfKinContactNumber": null,
+  "salaryBand": null,
+  "officeLocation": null,
+  "position": null,
+  "userType": null,
+  "manager": null,
 };
 
 function CreateEmployeeForm({ sendToBackend }) {
@@ -113,7 +115,7 @@ function CreateEmployeeForm({ sendToBackend }) {
 
       <Fieldset id="nextOfKinInfo">
         <Fieldset.Legend>
-          <b>Next of Kin Informtion</b>
+          <b>Next of Kin Information</b>
         </Fieldset.Legend>
 
         <InputField
@@ -149,19 +151,25 @@ function CreateEmployeeForm({ sendToBackend }) {
         <Fieldset.Legend>
           <b>Employment Details</b>
         </Fieldset.Legend>
-
-        <InputField
-          name="salaryBand"
-          value={employeeObject.salaryBand}
-          onChange={(e) =>
-            setEmployeeObject({
-              ...employeeObject,
-              salaryBand: e.target.value,
-            })
-          }
-        >
-          Salary Band
-        </InputField>
+        <Select  label="Salary Band"
+        name="salaryBand"
+        value={employeeObject.salaryBand}
+        onChange={(e) =>
+          setEmployeeObject({
+            ...employeeObject,
+            salaryBand: parseInt(e.target.value,10),
+          })
+        }>
+          <option value={null}>Please choose a salary band</option>
+          <option value="1">Band 1</option>
+          <option value="2">Band 2</option>
+          <option value="3">Band 3</option>
+          <option value="4">Band 4</option>
+          <option value="5">Band 5</option>
+          <option value="6">Band 6</option>
+          <option value="7">Band 7</option>
+          <option value="8">Band 8</option>
+        </Select>
         <br />
 
         <InputField
@@ -212,7 +220,7 @@ function CreateEmployeeForm({ sendToBackend }) {
           onChange={(e) =>
             setEmployeeObject({
               ...employeeObject,
-              manager: e.target.value,
+              manager: parseInt(e.target.value,10),
             })
           }
         >
