@@ -7,7 +7,6 @@ import Button from "@govuk-react/button";
 import Select from '@govuk-react/select';
 
 const emptyEmployeeObject = {
-  "id":7005,
   "firstName": null,
   "lastName": null,
   "email": null,
