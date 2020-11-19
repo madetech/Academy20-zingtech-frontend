@@ -8,7 +8,7 @@ import React from 'react';
 import Panel from '@govuk-react/panel';
 import Link from '@govuk-react/link';
 
-class VisitorCreateUpdateForm extends React.Component {
+class CreateVisitorForm extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -28,7 +28,7 @@ class VisitorCreateUpdateForm extends React.Component {
       error: 'Example',
     };
    
-    return <>
+    return <div id="createVisitorForm">
         <Fieldset>
           <Fieldset.Legend><b>Visit information</b></Fieldset.Legend>
           <InputField name="host">Host ID</InputField><br/>
@@ -57,9 +57,8 @@ class VisitorCreateUpdateForm extends React.Component {
         </Fieldset>
 
         <Link href="/visitors"><Button>Submit visit details</Button></Link>
-
-</>
+    </div>
   }
 }
 
-export default VisitorCreateUpdateForm;
+export default CreateVisitorForm;
