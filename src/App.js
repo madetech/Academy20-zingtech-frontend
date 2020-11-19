@@ -18,6 +18,7 @@ import CreateNewEmployeePage from './pages/CreateNewEmployeePage'
 import EmployeeDataPage from './pages/EmployeeDataPage'
 import MyVisitorsPage from './pages/MyVisitorsPage'
 import VisitDataPage from './pages/VisitDataPage'
+import CreateNewVisitorPage from './pages/CreateNewVisitorPage'
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route exact path="/visitors">
           <MyVisitorsPage />
+        </Route>
+        <Route exact path="/createvisitor">
+          <CreateNewVisitorPage /> 
         </Route>
         <Route path={`/visitors/:visitId`}>
           <VisitDataPage />
