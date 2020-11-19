@@ -2,6 +2,8 @@ import Page from '@govuk-react/page';
 import LoggedInTopNav from '../components/LoggedInTopNav'
 import Breadcrumbs from '@govuk-react/breadcrumbs';
 import Heading from '@govuk-react/heading';
+import Button from '@govuk-react/button';
+import Link from '@govuk-react/link';
 
 import VisitDataTable from '../components/VisitDataTable';
 import React,{useState, useEffect} from 'react';
@@ -30,6 +32,7 @@ const MyVisitorsPage = (props) => {
         </Breadcrumbs>}
       >
         <Heading>My visitors</Heading>
+        <Link href="/createvisitor"><Button>Create new visit</Button></Link>
         <VisitDataTable data={visitData} loading={loading} />
       </Page>
   </div>
