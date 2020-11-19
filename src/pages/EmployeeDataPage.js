@@ -59,13 +59,13 @@ function EmployeeDataPage() {
               HMRC-HR
             </Breadcrumbs.Link>
             <Breadcrumbs.Link id="employeesBreadcrumb" href="/employees">
-              My Employees
+              My employees
             </Breadcrumbs.Link>
             {`${employeeData.firstName} ${employeeData.email}`}
           </Breadcrumbs>
         }
       >
-        <Heading>Employee Details</Heading>
+        <Heading>Employee details</Heading>
         <EmployeeDetails
           employeeData={employeeData}
           loading={loading}

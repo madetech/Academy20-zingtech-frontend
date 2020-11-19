@@ -31,11 +31,11 @@ function MyEmployeesPage(props) {
         beforeChildren={
           <Breadcrumbs>
             <Breadcrumbs.Link href="/">HMRC-HR</Breadcrumbs.Link>
-            My Employees
+            My employees
           </Breadcrumbs>
         }
       >
-        <Heading>My Employees</Heading>
+        <Heading>My employees</Heading>
 
         <EmployeeDataTable data={employeeData} loading={loading} />
         <br />

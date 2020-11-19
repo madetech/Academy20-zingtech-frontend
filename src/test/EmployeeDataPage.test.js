@@ -61,7 +61,7 @@ it("EmployeeDataPage breadcrumbs contain employees", () => {
     );
   });
   expect(document.getElementById("employeesBreadcrumb").textContent).toContain(
-    "My Employees"
+    "My employees"
   );
   expect(document.getElementById("employeesBreadcrumb")).toHaveAttribute(
     "href",
