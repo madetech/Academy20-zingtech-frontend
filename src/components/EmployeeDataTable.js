@@ -63,7 +63,7 @@ function EmployeeDataTable({ data, loading }) {
         customBodyRenderLite: (dataIndex, rowIndex) => {
           return (
             <Link href={`/employeedata/${data[dataIndex].id}`}>
-              <Button>View Details</Button>
+              <Button>View details</Button>
             </Link>
           );
         },
