@@ -29,7 +29,7 @@ const MyVisitorsPage = (props) => {
           My Visitors
         </Breadcrumbs>}
       >
-        <Heading>My Visitors</Heading>
+        <Heading>My visitors</Heading>
         <VisitDataTable data={visitData} loading={loading} />
       </Page>
   </div>
