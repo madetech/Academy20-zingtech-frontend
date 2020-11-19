@@ -13,9 +13,10 @@ class UpdateMyProfileForm extends React.Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
 
     this.state = {
-      // TODO: Update when authentication implemented
+      // TODO: Update current_user when authentication implemented
       current_user: 10000,
       loaded: false,
       initial: {},
@@ -41,6 +42,12 @@ class UpdateMyProfileForm extends React.Component {
     })
   }
 
+  handleReset(e) {
+    this.setState({
+      updated: this.state.initial
+    });
+  }
+
   render() {
     let { initial, updated, loaded } = this.state;
 
@@ -57,7 +64,7 @@ class UpdateMyProfileForm extends React.Component {
           </Label><br/>
 
           <DateField defaultValues={{
-            // TODO: API needs to return date of births
+            // TODO: API needs to return date of birth
             day: "31",
             month: "10",
             year: "1982"
@@ -90,7 +97,8 @@ class UpdateMyProfileForm extends React.Component {
           </Label><br/>
         </Fieldset>
         <br/ >
-        <Link href="/visitors"><Button>Review and confirm</Button></Link>
+        <Button onClick={ this.handleReset }>Reset</Button>
+        <Button onClick={ this.handleSubmit }>Review and confirm</Button>
     </div>
   }
 }
