@@ -46,3 +46,10 @@ it("MyVisitorsPage contains a VisitDataTable", () => {
     });
     expect(document.getElementById('visitDataTable')).toBeVisible();
 });
+
+it("MyVisitorsPage contains a button to create a new visit", () => {
+    act(() => {
+        render(<Router><MyVisitorsPage /></Router>, container);
+    });
+    expect(document.getElementById('createNewVisitButton')).toBeVisible();
+});
