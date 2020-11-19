@@ -1,5 +1,4 @@
 import Table from "@govuk-react/table";
-import { Link } from "react-router-dom";
 import ContentEditable from "react-contenteditable";
 import React from "react";
 
@@ -27,49 +26,6 @@ class Row extends React.Component {
       editing: false,
     };
   }
-
-  handleFieldEdit = (e) => {
-    this.setState({
-      value: e.target.value,
-    });
-  };
-
-  handleCancel = (e) => {
-    this.setState({
-      value: this.props.initial_value,
-    });
-    this.setState({ editing: false });
-  };
-
-  handleChange = (e) => {
-    this.setState({
-      editing: true,
-    });
-  };
-
-  handleSave = (e) => {
-    this.setState({ editing: false });
-    console.log("Remember to send to the API!");
-  };
-
-  handleCancel = (e) => {
-    this.setState({ editing: false });
-    this.setState({
-      value: this.props.initial_value,
-    });
-  };
-
-  displayActionButtons = () => {
-    return this.state.editing ? (
-      <>
-        <Link onClick={this.handleSave}>Save</Link>{" "}
-        <Link onClick={this.handleCancel}>Cancel</Link>
-      </>
-    ) : (
-      <Link onClick={this.handleChange}>Change</Link>
-    );
-  };
-
   render = () => {
     return (
       <>
@@ -83,7 +39,6 @@ class Row extends React.Component {
               onChange={this.handleFieldEdit}
             />
           </Table.Cell>
-          <Table.Cell>{this.displayActionButtons()}</Table.Cell>
         </Table.Row>
       </>
     );
@@ -94,11 +49,11 @@ class Profile extends React.Component {
   render = () => {
     return (
       <>
-        <Table caption="Information we hold about you">
-          <Row
-            field_name="Name"
-            initial_value={`${data.first_name} ${data.last_name}`}
-          />
+        <Table>
+          <Table.Row>
+            <Table.CellHeader>Name</Table.CellHeader>
+            <Table.Cell>{`${data.first_name} ${data.last_name}`}</Table.Cell>
+          </Table.Row>
           <Table.Row>
             <Table.CellHeader>Date of Birth</Table.CellHeader>
             <Table.Cell>{data.date_of_birth}</Table.Cell>
@@ -107,9 +62,6 @@ class Profile extends React.Component {
           <Table.Row>
             <Table.CellHeader>Home Address</Table.CellHeader>
             <Table.Cell>{data.address}</Table.Cell>
-            <Table.Cell>
-              <Link href="#">Change</Link>
-            </Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.CellHeader>Contact Details</Table.CellHeader>
@@ -119,9 +71,6 @@ class Profile extends React.Component {
               <br />
               {data.email}
             </Table.Cell>
-            <Table.Cell>
-              <Link href="#">Change</Link>
-            </Table.Cell>
           </Table.Row>
           <Table.Row>
             <Table.CellHeader>Next of kin</Table.CellHeader>
@@ -130,9 +79,6 @@ class Profile extends React.Component {
               <br />
               <br />
               {data.next_of_kin_contact_number}
-            </Table.Cell>
-            <Table.Cell>
-              <Link href="#">Change</Link>
             </Table.Cell>
           </Table.Row>
         </Table>
