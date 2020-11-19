@@ -2,7 +2,6 @@ import InputField from '@govuk-react/input-field';
 import Fieldset from '@govuk-react/fieldset';
 import DateField from '@govuk-react/date-field';
 import Button from '@govuk-react/button';
-import Select from '@govuk-react/select';
 import TextArea from '@govuk-react/text-area';
 import React from 'react';
 import Link from '@govuk-react/link';
@@ -21,35 +20,24 @@ class UpdateMyProfileForm extends React.Component {
   }
 
   render = () => { 
-    return <div id="updateMyProfileForm">
+    return <div id="">
         <Fieldset>
-          <Fieldset.Legend><b>Visit information</b></Fieldset.Legend>
-          <InputField name="host">Host ID</InputField><br/>
-          <InputField name="office">Visit office location</InputField><br/>
-          <InputField name="purpose">Visit purpose</InputField><br/>
-          <DateField hintText="For example, 31 03 1980">
-          Start date
-          </DateField>
-          <InputField name="start_time">Start time</InputField><br/>
-          <DateField hintText="For example, 31 03 1980">
-          End date
-          </DateField>
-          <InputField name="end_time">End time</InputField><br/>
-          <TextArea name="notes">Notes</TextArea><br/>
+          <h2>About you</h2>
+          <InputField name="firstName">First name</InputField><br/>
+          <InputField name="lastName">Last name</InputField><br/>
+          <DateField>Date of birth</DateField>
+
+          <h2>Your contact details</h2>
+          <InputField name="address1">Address 1</InputField><br/>
+          <InputField name="address1">Address 2</InputField><br/>
+          <InputField name="end_time">City</InputField><br/>
+
+          <h2>Your next of kin</h2>
+          <InputField name="nextOfKin">Name</InputField><br />
+          <InputField name="nextOfKin">Contact telephone number</InputField>
         </Fieldset>
         <br/ >
-        <Fieldset>
-          <Fieldset.Legend><b>Visitor</b></Fieldset.Legend>
-          <InputField name="first_name">First name</InputField><br/>
-          <InputField name="last_name">Last name</InputField><br/>
-          <InputField name="email">Email address</InputField><br/>
-          <InputField 
-          name="contact_number"
-          hint="Format like this: 07857 550 853">Mobile phone number
-          </InputField><br/>
-        </Fieldset>
-
-        <Link href="/visitors"><Button>Submit visit details</Button></Link>
+        <Link href="/visitors"><Button>Review and confirm</Button></Link>
     </div>
   }
 }
