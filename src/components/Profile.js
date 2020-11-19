@@ -24,7 +24,7 @@ const Profile = () => {
   const [profileData, setProfileData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // To be updated when authentication implement
+  // To be updated when authentication implemented
   const currentUser = 10000;
 
   useEffect(() => {
@@ -34,49 +34,47 @@ const Profile = () => {
         setLoading(false);
         setProfileData(res.data);
       })
-  }, [])
+    }, [])
 
-  return (
-    <>
-      <Table>
-        <Table.Row>
-          <Table.CellHeader>Name</Table.CellHeader>
-          <Table.Cell>{`${profileData.firstName} ${profileData.lastName}`}</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.CellHeader>Date of birth</Table.CellHeader>
-          <Table.Cell>31 October 1982</Table.Cell>
-          <Table.Cell></Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.CellHeader>Home address</Table.CellHeader>
-          <Table.Cell>
-            {profileData.address}<br />
-            {profileData.city}<br />
-            {profileData.postcode}
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.CellHeader>Contact details</Table.CellHeader>
-          <Table.Cell>
-            {profileData.mobileNumber}
-            <br />
-            <br />
-            <Link href={`mailto:${profileData.email}`}>{profileData.email}</Link>
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.CellHeader>Next of kin</Table.CellHeader>
-          <Table.Cell>
-            {profileData.nextOfKin}
-            <br />
-            <br />
-            {profileData.nextOfKinContactNumber}
-          </Table.Cell>
-        </Table.Row>
-      </Table>
-    </>
-  );
+  return <>
+    <Table>
+      <Table.Row>
+        <Table.CellHeader>Name</Table.CellHeader>
+        <Table.Cell>{`${profileData.firstName} ${profileData.lastName}`}</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.CellHeader>Date of birth</Table.CellHeader>
+        <Table.Cell>31 October 1982</Table.Cell>
+        <Table.Cell></Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.CellHeader>Home address</Table.CellHeader>
+        <Table.Cell>
+          {profileData.address}<br />
+          {profileData.city}<br />
+          {profileData.postcode}
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.CellHeader>Contact details</Table.CellHeader>
+        <Table.Cell>
+          {profileData.mobileNumber}
+          <br />
+          <br />
+          <Link href={`mailto:${profileData.email}`}>{profileData.email}</Link>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.CellHeader>Next of kin</Table.CellHeader>
+        <Table.Cell>
+          {profileData.nextOfKin}
+          <br />
+          <br />
+          {profileData.nextOfKinContactNumber}
+        </Table.Cell>
+      </Table.Row>
+    </Table>
+  </>
 }
 
 export default Profile;

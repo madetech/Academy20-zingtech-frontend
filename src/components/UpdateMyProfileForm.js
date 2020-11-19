@@ -3,43 +3,77 @@ import Fieldset from '@govuk-react/fieldset';
 import DateField from '@govuk-react/date-field';
 import Button from '@govuk-react/button';
 import TextArea from '@govuk-react/text-area';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from '@govuk-react/link';
+import Input from '@govuk-react/input';
+import Label from '@govuk-react/label';
+import LabelText from '@govuk-react/label-text';
+import axios from "axios";
 
-class UpdateMyProfileForm extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-    };
-  }
+const UpdateMyProfileForm = () => {
+  // TODO: To be updated when authentication implemented
+  const currentUser = 10000;
 
-  handleChange = e => {
-    this.setState({
+  const [profileData, setProfileData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    })
-  }
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`https://zingtech-backend.herokuapp.com/api/employeedata/${currentUser}`)
+      .then(res => {
+        setLoading(false);
+        setProfileData(res.data);
+      })
+  }, [])
 
-  render = () => { 
-    return <div id="">
-        <Fieldset>
-          <h2>About you</h2>
-          <InputField name="firstName">First name</InputField><br/>
-          <InputField name="lastName">Last name</InputField><br/>
-          <DateField>Date of birth</DateField>
+  return <div id="">
+      <Fieldset>
+        <h2>About you</h2>
+        <Label >
+          <LabelText>First name</LabelText>
+          <Input value={profileData.firstName} />
+        </Label><br/>
+        <Label >
+          <LabelText>Last name</LabelText>
+          <Input value={profileData.lastName} />
+        </Label><br/>
 
-          <h2>Your contact details</h2>
-          <InputField name="address1">Address 1</InputField><br/>
-          <InputField name="address1">Address 2</InputField><br/>
-          <InputField name="end_time">City</InputField><br/>
+        <DateField defaultValues={{
+          // TODO: API needs to return date of births
+          day: "31",
+          month: "10",
+          year: "1982"
+        }}>
+          Date of birth
+        </DateField>
 
-          <h2>Your next of kin</h2>
-          <InputField name="nextOfKin">Name</InputField><br />
-          <InputField name="nextOfKin">Contact telephone number</InputField>
-        </Fieldset>
-        <br/ >
-        <Link href="/visitors"><Button>Review and confirm</Button></Link>
-    </div>
-  }
+        <h2>Your contact details</h2>
+        <Label>
+          <LabelText>Address 1</LabelText>
+          <Input value={profileData.address} />
+        </Label><br/>
+        <Label>
+          <LabelText>Address 2</LabelText>
+          <Input value="" />
+        </Label><br/>
+        <Label>
+          <LabelText>City</LabelText>
+          <Input value={profileData.city} />
+        </Label><br/>
+
+        <h2>Your next of kin</h2>
+        <Label>
+          <LabelText>Name</LabelText>
+          <Input value={profileData.nextOfKin} />
+        </Label><br/>
+        <Label>
+          <LabelText>Contact telephone number</LabelText>
+          <Input value={profileData.nextOfKinContactNumber} />
+        </Label><br/>
+      </Fieldset>
+      <br/ >
+      <Link href="/visitors"><Button>Review and confirm</Button></Link>
+  </div>
 }
 
 export default UpdateMyProfileForm;
