@@ -1,7 +1,9 @@
 import Heading from '@govuk-react/heading';
 import Breadcrumbs from '@govuk-react/breadcrumbs';
-import { Link } from "react-router-dom";
 import Page from '@govuk-react/page';
+import LeadParagraph from '@govuk-react/lead-paragraph';
+import Button from '@govuk-react/button';
+import Link from '@govuk-react/link';
 
 // Our components 
 import Profile from '../components/Profile'
@@ -20,7 +22,9 @@ const MyProfilePage = (props) => (
       }
     >
       <Heading>My profile</Heading>
-      {<Profile />}
+      <LeadParagraph> Use this page to view and update information we hold about you. </LeadParagraph>
+      <Profile />
+      <Link href="/myprofile/update"><Button>Update my profile</Button></Link>
     </Page>
   </div>
 );
