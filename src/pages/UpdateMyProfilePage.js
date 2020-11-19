@@ -25,4 +25,4 @@ const UpdateMyProfilePage = () => (
 </>
 );
 
-export default UpdateMyProfileForm;
+export default UpdateMyProfilePage;
