@@ -32,7 +32,7 @@ const MyVisitorsPage = (props) => {
         </Breadcrumbs>}
       >
         <Heading>My visitors</Heading>
-        <Link href="/createvisitor"><Button>Create new visit</Button></Link>
+        <Link href="/createvisit"><Button>Create new visit</Button></Link>
         <VisitDataTable data={visitData} loading={loading} />
       </Page>
   </div>

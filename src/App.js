@@ -42,7 +42,7 @@ function App() {
         <Route exact path="/visitors">
           <MyVisitorsPage />
         </Route>
-        <Route exact path="/createvisitor">
+        <Route exact path="/createvisit">
           <CreateNewVisitorPage /> 
         </Route>
         <Route path={`/visitors/:visitId`}>
