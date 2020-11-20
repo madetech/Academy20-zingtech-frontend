@@ -19,6 +19,7 @@ import EmployeeDataPage from './pages/EmployeeDataPage'
 import MyVisitorsPage from './pages/MyVisitorsPage'
 import VisitDataPage from './pages/VisitDataPage'
 import CreateNewVisitorPage from './pages/CreateNewVisitorPage'
+import UpdateMyProfilePage from './pages/UpdateMyProfilePage';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route exact path ="/home">
           <MyProfilePage />
+        </Route>
+        <Route exact path="/myprofile/update">
+          <UpdateMyProfilePage />
         </Route>
         <Route exact path="/employees">
           <MyEmployeesPage /> 

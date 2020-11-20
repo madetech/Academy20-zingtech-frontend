@@ -1,14 +1,13 @@
 import Heading from '@govuk-react/heading';
 import Breadcrumbs from '@govuk-react/breadcrumbs';
-import TopNav, { asNavLinkAnchor } from '@govuk-react/top-nav';
-import { Link } from "react-router-dom";
 import Page from '@govuk-react/page';
+import LeadParagraph from '@govuk-react/lead-paragraph';
+import Button from '@govuk-react/button';
+import Link from '@govuk-react/link';
 
 // Our components 
 import Profile from '../components/Profile'
 import LoggedInTopNav from '../components/LoggedInTopNav'
-
-const NavLink = asNavLinkAnchor(Link);
 
 const MyProfilePage = (props) => (
   <div id="myProfilePage">
@@ -18,12 +17,14 @@ const MyProfilePage = (props) => (
       {
         <Breadcrumbs id='myProfileBreadcrumbs'>
           <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-          My Profile
+          My profile
         </Breadcrumbs>
       }
     >
-      <Heading>My Profile</Heading>
-      {<Profile />}
+      <Heading>My profile</Heading>
+      <LeadParagraph> Use this page to view and update information we hold about you. </LeadParagraph>
+      <Profile />
+      <Link href="/myprofile/update"><Button>Update my profile</Button></Link>
     </Page>
   </div>
 );

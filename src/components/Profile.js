@@ -1,7 +1,9 @@
+import React,{useState, useEffect} from 'react';
+import axios from "axios";
+
 import Table from "@govuk-react/table";
-import { Link } from "react-router-dom";
-import ContentEditable from "react-contenteditable";
-import React from "react";
+import Link from "@govuk-react/link";
+
 
 const data = {
   employee_type: "Employee",
@@ -18,127 +20,61 @@ const data = {
   "office location": "Chendong",
 };
 
-class Row extends React.Component {
-  constructor(props) {
-    super();
-    this.contentEditable = React.createRef();
-    this.state = {
-      value: props.initial_value,
-      editing: false,
-    };
-  }
+const Profile = () => {
+  const [profileData, setProfileData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  handleFieldEdit = (e) => {
-    this.setState({
-      value: e.target.value,
-    });
-  };
+  // To be updated when authentication implemented
+  const currentUser = 10000;
 
-  handleCancel = (e) => {
-    this.setState({
-      value: this.props.initial_value,
-    });
-    this.setState({ editing: false });
-  };
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`https://zingtech-backend.herokuapp.com/api/employeedata/${currentUser}`)
+      .then(res => {
+        setLoading(false);
+        setProfileData(res.data);
+      })
+    }, [])
 
-  handleChange = (e) => {
-    this.setState({
-      editing: true,
-    });
-  };
-
-  handleSave = (e) => {
-    this.setState({ editing: false });
-    console.log("Remember to send to the API!");
-  };
-
-  handleCancel = (e) => {
-    this.setState({ editing: false });
-    this.setState({
-      value: this.props.initial_value,
-    });
-  };
-
-  displayActionButtons = () => {
-    return this.state.editing ? (
-      <>
-        <Link onClick={this.handleSave}>Save</Link>{" "}
-        <Link onClick={this.handleCancel}>Cancel</Link>
-      </>
-    ) : (
-      <Link onClick={this.handleChange}>Change</Link>
-    );
-  };
-
-  render = () => {
-    return (
-      <>
-        <Table.Row>
-          <Table.CellHeader>{this.props.field_name}</Table.CellHeader>
-          <Table.Cell>
-            <ContentEditable
-              innerRef={this.contentEditable}
-              html={this.state.value}
-              disabled={!this.state.editing}
-              onChange={this.handleFieldEdit}
-            />
-          </Table.Cell>
-          <Table.Cell>{this.displayActionButtons()}</Table.Cell>
-        </Table.Row>
-      </>
-    );
-  };
-}
-
-class Profile extends React.Component {
-  render = () => {
-    return (
-      <>
-        <Table caption="Information we hold about you">
-          <Row
-            field_name="Name"
-            initial_value={`${data.first_name} ${data.last_name}`}
-          />
-          <Table.Row>
-            <Table.CellHeader>Date of Birth</Table.CellHeader>
-            <Table.Cell>{data.date_of_birth}</Table.Cell>
-            <Table.Cell></Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.CellHeader>Home Address</Table.CellHeader>
-            <Table.Cell>{data.address}</Table.Cell>
-            <Table.Cell>
-              <Link href="#">Change</Link>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.CellHeader>Contact Details</Table.CellHeader>
-            <Table.Cell>
-              {data.contact_number}
-              <br />
-              <br />
-              {data.email}
-            </Table.Cell>
-            <Table.Cell>
-              <Link href="#">Change</Link>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.CellHeader>Next of kin</Table.CellHeader>
-            <Table.Cell>
-              {data.next_of_kin}
-              <br />
-              <br />
-              {data.next_of_kin_contact_number}
-            </Table.Cell>
-            <Table.Cell>
-              <Link href="#">Change</Link>
-            </Table.Cell>
-          </Table.Row>
-        </Table>
-      </>
-    );
-  };
+  return <>
+    <Table>
+      <Table.Row>
+        <Table.CellHeader>Name</Table.CellHeader>
+        <Table.Cell>{`${profileData.firstName} ${profileData.lastName}`}</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.CellHeader>Date of birth</Table.CellHeader>
+        <Table.Cell>31 October 1982</Table.Cell>
+        <Table.Cell></Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.CellHeader>Home address</Table.CellHeader>
+        <Table.Cell>
+          {profileData.address}<br />
+          {profileData.city}<br />
+          {profileData.postcode}
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.CellHeader>Contact details</Table.CellHeader>
+        <Table.Cell>
+          {profileData.mobileNumber}
+          <br />
+          <br />
+          <Link href={`mailto:${profileData.email}`}>{profileData.email}</Link>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.CellHeader>Next of kin</Table.CellHeader>
+        <Table.Cell>
+          {profileData.nextOfKin}
+          <br />
+          <br />
+          {profileData.nextOfKinContactNumber}
+        </Table.Cell>
+      </Table.Row>
+    </Table>
+  </>
 }
 
 export default Profile;
