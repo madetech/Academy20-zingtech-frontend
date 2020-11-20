@@ -13,8 +13,8 @@ const CreateNewVisitorPage = () => (
     beforeChildren=
         {
         <Breadcrumbs>
-            <Breadcrumbs.Link href="/">HMRC-HR</Breadcrumbs.Link>
-            <Breadcrumbs.Link href="/visitors">My Visitors</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/visitors">My visitors</Breadcrumbs.Link>
             Create visit
         </Breadcrumbs>
         }

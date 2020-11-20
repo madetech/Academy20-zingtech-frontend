@@ -37,7 +37,7 @@ it("MyVisitorsPage contains breadcrumbs", () => {
     act(() => {
         render(<Router><MyVisitorsPage/></Router>, container);
     });
-    expect(document.getElementById('existingVisitBreadcrumbs').textContent).toContain("HomeMy Visitors");
+    expect(document.getElementById('existingVisitBreadcrumbs').textContent).toContain("HomeMy visitors");
 });
 
 it("MyVisitorsPage contains a VisitDataTable", () => {

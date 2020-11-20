@@ -28,7 +28,7 @@ const MyVisitorsPage = (props) => {
       <Page header={<LoggedInTopNav highlighted='visitorsTopNav' />}
         beforeChildren={<Breadcrumbs id="existingVisitBreadcrumbs">
           <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-          My Visitors
+          My visitors
         </Breadcrumbs>}
       >
         <Heading>My visitors</Heading>

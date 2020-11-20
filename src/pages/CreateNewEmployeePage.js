@@ -29,11 +29,11 @@ function CreateNewEmployeePage() {
         header={<LoggedInTopNav highlighted="employeesTopNav" />}
         beforeChildren={
           <Breadcrumbs>
-            <Breadcrumbs.Link href="/">HMRC-HR</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
             <Breadcrumbs.Link id="employeesBreadcrumb" href="/employees">
-              My Employees
+              My employees
             </Breadcrumbs.Link>
-            Create New Employee
+            Create new employee
           </Breadcrumbs>
         }
       >

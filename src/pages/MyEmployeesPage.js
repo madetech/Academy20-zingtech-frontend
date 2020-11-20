@@ -30,7 +30,7 @@ function MyEmployeesPage(props) {
         header={<LoggedInTopNav highlighted="employeesTopNav" />}
         beforeChildren={
           <Breadcrumbs>
-            <Breadcrumbs.Link href="/">HMRC-HR</Breadcrumbs.Link>
+            <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
             My employees
           </Breadcrumbs>
         }
