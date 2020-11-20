@@ -20,9 +20,6 @@ const LoginPage = (props) => (
     <NavLink to={"#"}>
       About
     </NavLink>
-    <NavLink to={"#"}>
-      Other navigation?
-    </NavLink>
   </TopNav> }
   beforeChildren=
     {
