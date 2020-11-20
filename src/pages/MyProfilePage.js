@@ -18,11 +18,11 @@ const MyProfilePage = (props) => (
       {
         <Breadcrumbs id='myProfileBreadcrumbs'>
           <Breadcrumbs.Link href="/">Home</Breadcrumbs.Link>
-          My Profile
+          My profile
         </Breadcrumbs>
       }
     >
-      <Heading>My Profile</Heading>
+      <Heading>My profile</Heading>
       {<Profile />}
     </Page>
   </div>
