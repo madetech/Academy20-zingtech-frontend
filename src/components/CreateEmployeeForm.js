@@ -4,7 +4,10 @@ import InputField from "@govuk-react/input-field";
 import Fieldset from "@govuk-react/fieldset";
 import DateField from "@govuk-react/date-field";
 import Button from "@govuk-react/button";
+import Link from "@govuk-react/link";
 import Select from '@govuk-react/select';
+import Panel from '@govuk-react/panel';
+import BackLink from '@govuk-react/back-link';
 
 import CreateForm from "./CreateEmployee/CreateForm"
 import ReviewForm from "./CreateEmployee/ReviewForm"
@@ -31,13 +34,47 @@ function CreateEmployeeForm({ sendToBackend }) {
   const [formState, setFormState] = useState("create")
 
 
-  return ( <div>
+  return ( 
+  <div>
     {formState === "create" && <CreateForm employeeObject={employeeObject} setEmployeeObject={setEmployeeObject} />}
     {formState === "review" && <ReviewForm employeeObject={employeeObject} setEmployeeObject={setEmployeeObject} />}
+    {formState === "submitted" && <Panel title="Employee created" />}
     <br />
-      <Button onClick={() => setFormState("review")}>
-        Review and confirm
-      </Button>
+    
+    
+    {formState === "create" && <> 
+        <Button onClick={() => setFormState("review")}>
+          Review and confirm
+        </Button>
+        {" "}
+        <Link href="/createemployee"><Button>
+          Reset
+        </Button></Link> 
+        {" "}
+        <Link href="/employees"><Button>
+          Cancel
+        </Button></Link>
+        {" "}
+      </>}
+    {formState === "review" && 
+        <>
+          <Button onClick={() => {
+              sendToBackend(employeeObject)
+              setFormState("submitted")}
+              }>
+            Confirm
+          </Button>
+          {" "}
+          <Button onClick={() => setFormState("create")}>
+            Back
+          </Button>
+          {" "}
+          <Link href="/employees"><Button>
+            Cancel
+          </Button></Link>
+          {" "}
+        </>}
+      {formState === "submitted" && <BackLink href='/employees'>Back to my employees</BackLink>}
       </div>
     
   );
