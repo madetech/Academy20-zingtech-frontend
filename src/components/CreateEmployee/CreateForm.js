@@ -99,12 +99,12 @@ export default function CreateForm( {employeeObject, setEmployeeObject}) {
         </Fieldset.Legend>
 
         <InputField
-          name="nextOfKinName"
-          value={employeeObject.nextOfKinName}
+          name="nextOfKin"
+          value={employeeObject.nextOfKin}
           onChange={(e) =>
             setEmployeeObject({
               ...employeeObject,
-              nextOfKinName: e.target.value,
+              nextOfKin: e.target.value,
             })
           }
         >
