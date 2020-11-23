@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 import InputField from "@govuk-react/input-field";
 import Fieldset from "@govuk-react/fieldset";
@@ -6,19 +6,54 @@ import DateField from "@govuk-react/date-field";
 import Button from "@govuk-react/button";
 import Select from '@govuk-react/select';
 
-export default function CreateForm( {employeeObject, setEmployeeObject}) {
+const validationRules = {
+  "firstName": {
+    "function": (value) => { return value != "Steve" },
+    "message": "No Steves allowed"
+  }
+}
+
+const emptyValidation = {
+  "firstName": null,
+  "lastName": null,
+  "email": null,
+  "mobileNumber": null,
+  "address": null,
+  "city": null,
+  "postcode": null,
+  "nextOfKinName": null,
+  "nextOfKinContactNumber": null,
+  "salaryBand": null,
+  "officeLocation": null,
+  "position": null,
+  "userType": null,
+  "manager": null,
+};
+
+const validate = (field) => {
+  console.log(validationRules[field.name].function(field.value));
+  return validationRules[field.name].function(field.value);
+}
+
+export default function CreateForm( {employeeObject, setEmployeeObject} ) {
+   const [validateState, setValidateState] = useState(emptyValidation)
+
   return (
-    <div>
+    <form>
       <Fieldset id="employeeInformation">
         <Fieldset.Legend>
           <b>Employee Information</b>
         </Fieldset.Legend>
         <InputField
           name="firstName"
-          value={employeeObject.firstName}
-          onChange={(e) =>
+          value={ employeeObject.firstName }
+          meta={ { touched: (validateState.firstName !== null), error: validateState.firstName ? null : "No Steves allowed" } }
+          onBlur={(e) => {
+            if (!validate({name: "firstName", value: e.target.value })) {
+              setValidateState({ ...validateState, firstName: false })  
+            }
             setEmployeeObject({ ...employeeObject, firstName: e.target.value })
-          }
+          }}
         >
           First name
         </InputField>
@@ -208,8 +243,6 @@ export default function CreateForm( {employeeObject, setEmployeeObject}) {
         </InputField>
         <br />
       </Fieldset>
-      
-      </div>
-
+      </form>
   )
 }
