@@ -8,7 +8,7 @@ import Select from '@govuk-react/select';
 
 const validationRules = {
   "firstName": {
-    "function": (value) => { return value != "Steve" },
+    "function": (value) => { return value !== "Steve" },
     "message": "No Steves allowed"
   }
 }
@@ -31,7 +31,6 @@ const emptyValidation = {
 };
 
 const validate = (field) => {
-  console.log(validationRules[field.name].function(field.value));
   return validationRules[field.name].function(field.value);
 }
 
@@ -49,10 +48,8 @@ export default function CreateForm( {employeeObject, setEmployeeObject} ) {
           value={ employeeObject.firstName }
           meta={ { touched: (validateState.firstName !== null), error: validateState.firstName ? null : "No Steves allowed" } }
           onBlur={(e) => {
-            if (!validate({name: "firstName", value: e.target.value })) {
-              setValidateState({ ...validateState, firstName: false })  
-            }
-            setEmployeeObject({ ...employeeObject, firstName: e.target.value })
+              setValidateState({ ...validateState, firstName: validate({name: "firstName", value: e.target.value }) })  
+              setEmployeeObject({ ...employeeObject, firstName: e.target.value })
           }}
         >
           First name
