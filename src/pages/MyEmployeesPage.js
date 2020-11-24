@@ -10,6 +10,8 @@ import LoggedInTopNav from "../components/LoggedInTopNav";
 
 import EmployeeDataTable from "../components/EmployeeDataTable";
 
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+
 function MyEmployeesPage(props) {
   const [employeeData, setEmployeeData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -47,4 +49,6 @@ function MyEmployeesPage(props) {
   );
 }
 
-export default MyEmployeesPage;
+export default withAuthenticationRequired(MyEmployeesPage, {
+  onRedirecting: () => <h1>Loading</h1>,
+});

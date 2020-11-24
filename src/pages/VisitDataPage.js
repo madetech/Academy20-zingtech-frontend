@@ -10,6 +10,8 @@ import LoggedInTopNav from "../components/LoggedInTopNav";
 import { useParams } from "react-router-dom";
 import VisitorDetails from "../components/VisitDetails";
 
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+
 function VisitDataPage() {
   // The <Route> that rendered this component has a
   // path of `/topics/:topicId`. The `:topicId` portion
@@ -52,4 +54,6 @@ function VisitDataPage() {
   );
 }
 
-export default VisitDataPage;
+export default withAuthenticationRequired(VisitDataPage, {
+  onRedirecting: () => <h1>Loading</h1>,
+});

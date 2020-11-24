@@ -8,6 +8,8 @@ import Page from '@govuk-react/page';
 import LogoutButton from '../components/LogoutButton'
 import LoggedInTopNav from '../components/LoggedInTopNav'
 
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+
 const NavLink = asNavLinkAnchor(Link);
 
 const LogoutPage = (props) => (
@@ -28,4 +30,6 @@ const LogoutPage = (props) => (
     </div>
 );
 
-export default LogoutPage;
+export default withAuthenticationRequired(LogoutPage, {
+    onRedirecting: () => <h1>Loading</h1>,
+  });

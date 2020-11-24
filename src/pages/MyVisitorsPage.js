@@ -9,6 +9,8 @@ import VisitDataTable from '../components/VisitDataTable';
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+
 const MyVisitorsPage = (props) => {
 
   const [visitData, setVisitData] = useState([]);
@@ -39,4 +41,6 @@ const MyVisitorsPage = (props) => {
   )
 }
 
-export default MyVisitorsPage;
+export default withAuthenticationRequired(MyVisitorsPage, {
+  onRedirecting: () => <h1>Loading</h1>,
+});
