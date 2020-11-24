@@ -8,8 +8,6 @@ import Page from '@govuk-react/page';
 import Profile from '../components/Profile'
 import LoggedInTopNav from '../components/LoggedInTopNav'
 
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-
 const NavLink = asNavLinkAnchor(Link);
 
 const MyProfilePage = (props) => (
@@ -30,6 +28,4 @@ const MyProfilePage = (props) => (
   </div>
 );
 
-export default withAuthenticationRequired(MyProfilePage, {
-  onRedirecting: () => <h1>Loading</h1>,
-});
+export default MyProfilePage;

@@ -6,8 +6,6 @@ import Page from '@govuk-react/page';
 import CreateVisitorForm from '../components/CreateVisitorForm';
 import LoggedInTopNav from "../components/LoggedInTopNav";
 
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-
 const CreateNewVisitorPage = () => (
   <>
   <Page
@@ -27,8 +25,5 @@ const CreateNewVisitorPage = () => (
 </>
 );
 
+export default CreateNewVisitorPage;
 
-
-export default withAuthenticationRequired(CreateNewVisitorPage, {
-    onRedirecting: () => <h1>Loading</h1>,
-});

@@ -10,8 +10,6 @@ import LoggedInTopNav from "../components/LoggedInTopNav";
 import { useParams } from "react-router-dom";
 import EmployeeDetails from "../components/EmployeeDetails";
 
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-
 function EmployeeDataPage() {
   // The <Route> that rendered this component has a
   // path of `/topics/:topicId`. The `:topicId` portion
@@ -78,7 +76,4 @@ function EmployeeDataPage() {
   );
 }
 
-export default withAuthenticationRequired(EmployeeDataPage, {
-  onRedirecting: () => <h1>Loading</h1>,
-});
-
+export default EmployeeDataPage;

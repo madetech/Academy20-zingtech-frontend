@@ -7,8 +7,6 @@ import CreateEmployeeForm from "../components/CreateEmployeeForm";
 import LoggedInTopNav from "../components/LoggedInTopNav";
 import axios from "axios";
 
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-
 function CreateNewEmployeePage() {
   function sendToBackend(newEmployeeData) {
     console.log(JSON.stringify(newEmployeeData))
@@ -46,7 +44,4 @@ function CreateNewEmployeePage() {
   );
 }
 
-export default withAuthenticationRequired(CreateNewEmployeePage, {
-  onRedirecting: () => <h1>Loading</h1>,
-});
-
+export default CreateNewEmployeePage;
