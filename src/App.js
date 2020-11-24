@@ -12,6 +12,7 @@ import Table from '@govuk-react/table';
 
 // Our components 
 import LoginPage from './pages/LoginPage'
+import LogoutPage from './pages/LogoutPage'
 import MyProfilePage from './pages/MyProfilePage'
 import MyEmployeesPage from './pages/MyEmployeesPage'
 import CreateNewEmployeePage from './pages/CreateNewEmployeePage'
@@ -26,6 +27,9 @@ function App() {
       <Fragment>
         <Route exact path="/">
           <LoginPage/>
+        </Route>
+        <Route exact path="/signout">
+          <LogoutPage/>
         </Route>
         <Route exact path ="/home">
           <MyProfilePage />

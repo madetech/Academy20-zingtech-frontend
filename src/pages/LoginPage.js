@@ -6,6 +6,7 @@ import Page from '@govuk-react/page';
 
 // Our components 
 import Login from '../components/Login'
+import LoginButton from '../components/LoginButton'
 
 
 const NavLink = asNavLinkAnchor(Link);
@@ -30,7 +31,7 @@ const LoginPage = (props) => (
     }
   >
     <Heading>Login</Heading>
-    <Login homepage="/home" />
+    <LoginButton />
   </Page>
 </>
 );
