@@ -9,18 +9,22 @@ import axios from "axios";
 
 function CreateNewEmployeePage() {
   function sendToBackend(newEmployeeData) {
-    console.log(JSON.stringify(newEmployeeData))
-    axios.post(
-      "https://zingtech-backend.herokuapp.com/api/employeedata",
-      newEmployeeData,{
-      headers: {"Access-Control-Allow-Origin": "*"}}
-    ).then((response) => {
-      console.log(response.data);
-      console.log(response.status);
-      console.log(response.statusText);
-      console.log(response.headers);
-      console.log(response.config);
-    });
+    console.log(JSON.stringify(newEmployeeData));
+    axios
+      .post(
+        "https://zingtech-backend.herokuapp.com/api/employeedata",
+        newEmployeeData,
+        {
+          headers: { "Access-Control-Allow-Origin": "*" },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.status);
+        console.log(response.statusText);
+        console.log(response.headers);
+        console.log(response.config);
+      });
   }
 
   return (

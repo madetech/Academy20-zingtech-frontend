@@ -16,17 +16,19 @@ function VisitDataPage() {
   // of the URL indicates a placeholder that we can
   // get from `useParams()`.
   let { visitId } = useParams();
-  console.log(visitId)
+  console.log(visitId);
 
   const [visitData, setVisitData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://zingtech-backend.herokuapp.com/api/visitdata/${visitId}`).then((res) => {
-      setLoading(false);
-      setVisitData(res.data);
-    });
+    axios
+      .get(`https://zingtech-backend.herokuapp.com/api/visitdata/${visitId}`)
+      .then((res) => {
+        setLoading(false);
+        setVisitData(res.data);
+      });
   }, []);
 
   return (
