@@ -9,6 +9,7 @@ import axios from "axios";
 import LoggedInTopNav from "../components/LoggedInTopNav";
 import { useParams } from "react-router-dom";
 import EmployeeDetails from "../components/EmployeeDetails";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function EmployeeDataPage() {
   // The <Route> that rendered this component has a
@@ -21,30 +22,43 @@ function EmployeeDataPage() {
   const [employeeManager, setEmployeeManager] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const { getAccessTokenSilently } = useAuth0();
+
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get(
-        `https://zingtech-backend.herokuapp.com/api/employeedata/${employeeId}`
-      )
-      .then((res) => {
-        setEmployeeData(res.data);
-      });
-  }, []);
-  useEffect(() => {
-    if (employeeData.manager != null) {
+    async function getEmployeeData() {
+      setLoading(true);
+      const token = await getAccessTokenSilently();
       axios
         .get(
-          `https://zingtech-backend.herokuapp.com/api/employeedata/${employeeData.manager}`
+          `https://zingtech-backend.herokuapp.com/api/employeedata/${employeeId}`,
+          {headers: {'authorization': `Bearer ${token}`}}
+        )
+        .then((res) => {
+          setEmployeeData(res.data);
+        })
+    }
+    getEmployeeData();
+  }, []);
+  useEffect(() => {
+    async function getManagerData() {
+      if (employeeData.manager != null) {
+      const token = await getAccessTokenSilently();
+      axios
+        .get(
+          `https://zingtech-backend.herokuapp.com/api/employeedata/${employeeData.manager}`,
+          {headers: {'authorization': `Bearer ${token}`}}
         )
         .then((res) => {
           setLoading(false);
           setEmployeeManager(res.data);
         });
-    } else {
-      setLoading(false);
-      setEmployeeManager(false);
+      } else {
+        setLoading(false);
+        setEmployeeManager(false);
+      }
     }
+    getManagerData();
+    
   }, [employeeData]);
 
   return (

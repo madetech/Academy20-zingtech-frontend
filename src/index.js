@@ -6,13 +6,29 @@ import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
 
 
+// import { Auth0Client } from '@auth0/auth0-spa-js';
 
+// const auth0 = new Auth0Client({
+//   domain= "dev-agqzfv5q.eu.auth0.com",
+//   client_id= "sMaF7g9DJ5riJekb4GOzsIrs3A6FPvAA",
+//   redirect_uri= {window.location.origin + "/home"}
+// });
+
+// //if you do this, you'll need to check the session yourself
+// try {
+//   await getTokenSilently();
+// } catch (error) {
+//   if (error.error !== 'login_required') {
+//     throw error;
+//   }
+// }
 
 ReactDOM.render(
   <Auth0Provider
   domain="dev-agqzfv5q.eu.auth0.com"
   clientId="sMaF7g9DJ5riJekb4GOzsIrs3A6FPvAA"
   redirectUri={window.location.origin + "/home"}
+  audience="https://zingtech-backend.herokuapp.com"
 >
   <React.StrictMode>
     <App />

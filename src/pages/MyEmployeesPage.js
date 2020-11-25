@@ -6,18 +6,25 @@ import Button from "@govuk-react/button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { useAuth0 } from "@auth0/auth0-react";
+
 import LoggedInTopNav from "../components/LoggedInTopNav";
 
 import EmployeeDataTable from "../components/EmployeeDataTable";
 
 function MyEmployeesPage(props) {
+  const { getAccessTokenSilently } = useAuth0();
   const [employeeData, setEmployeeData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  useEffect(async() => {
     setLoading(true);
+    const token = await getAccessTokenSilently();
+
     axios
-      .get("https://zingtech-backend.herokuapp.com/api/employeedata")
+      .get("https://zingtech-backend.herokuapp.com/api/employeedata",
+      {headers: {'authorization': `Bearer ${token}`}}
+      )
       .then((res) => {
         setLoading(false);
         setEmployeeData(res.data);
