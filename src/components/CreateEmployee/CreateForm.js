@@ -46,6 +46,7 @@ export default function CreateForm( {employeeObject, setEmployeeObject} ) {
         <InputField
           name="firstName"
           value={ employeeObject.firstName }
+          input={{defaultValue: employeeObject.firstName}}
           meta={ { touched: (validateState.firstName !== null), error: validateState.firstName ? null : "No Steves allowed" } }
           onBlur={(e) => {
               setValidateState({ ...validateState, firstName: validate({name: "firstName", value: e.target.value }) })  
