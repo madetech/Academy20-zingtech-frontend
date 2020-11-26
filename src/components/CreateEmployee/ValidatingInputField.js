@@ -18,7 +18,6 @@ export const ValidatingInputField = (props) => {
         onBlur={(e) => {
             setTouched(true);
             setValid(props.validate(e.target.value));
-            props.validInput(valid)
         }}
         meta={{touched: touched, error: valid ? null : props.errorMessage }}
         >

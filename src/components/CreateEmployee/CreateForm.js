@@ -5,12 +5,15 @@ import Fieldset from "@govuk-react/fieldset";
 import DateField from "@govuk-react/date-field";
 import Button from "@govuk-react/button";
 import Select from '@govuk-react/select';
+import { ValidatingInputField } from './ValidatingInputField';
 
-const validationRules = {
-  "firstName": {
-    "function": (value) => { return value !== "Steve" },
-    "message": "No Steves allowed"
-  }
+// true == valid
+const notNull = (value) => value !== "" || value !== null;
+const alphabetOnly = (value) => !/\d/.test(value);
+const numbersOnly = (value) => !/\D/.test(value);
+const emailOnly = (value) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(value).toLowerCase());
 }
 
 const emptyValidation = {
@@ -30,12 +33,12 @@ const emptyValidation = {
   "manager": null,
 };
 
-const validate = (field) => {
-  return validationRules[field.name].function(field.value);
-}
-
 export default function CreateForm( {employeeObject, setEmployeeObject} ) {
    const [validateState, setValidateState] = useState(emptyValidation)
+
+  const changeValue = (data) => {
+    setEmployeeObject({ ...employeeObject, [data.name]: data.value });
+  }
 
   return (
     <form>
@@ -47,9 +50,9 @@ export default function CreateForm( {employeeObject, setEmployeeObject} ) {
           name="firstName"
           value={ employeeObject.firstName }
           input={{defaultValue: employeeObject.firstName}}
-          meta={ { touched: (validateState.firstName !== null), error: validateState.firstName ? null : "No Steves allowed" } }
+          meta={ { touched: !(validateState.firstName !== null), error: !validateState.firstName ? null : "First name must be made up of alphabetic characters only" } }
           onBlur={(e) => {
-              setValidateState({ ...validateState, firstName: validate({name: "firstName", value: e.target.value }) })  
+              setValidateState({ ...validateState, firstName: (notNull(e.target.value) && alphabetOnly(e.target.value)) })  
               setEmployeeObject({ ...employeeObject, firstName: e.target.value })
           }}
         >
