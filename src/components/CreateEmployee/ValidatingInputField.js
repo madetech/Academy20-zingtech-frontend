@@ -7,18 +7,18 @@ export const ValidatingInputField = (props) => {
 
     return (
         <InputField
-        name="lastName"
+        name={props.name}
         value={props.value}
         input={ 
             {defaultValue: props.value}
         }
         onChange={(e) =>
-            props.changeValue(e.target.value)
+            props.changeValue(e.target.value,props.name)
         }
         onBlur={(e) => {
             setTouched(true);
             setValid(props.validate(e.target.value));
-            props.validInput(valid)
+            props.validInput(valid,props.name)
         }}
         meta={{touched: touched, error: valid ? null : props.errorMessage }}
         >
