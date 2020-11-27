@@ -32,7 +32,7 @@ const headerLinksInfo = [
         text: "My visitors"
     },
     {
-        to: "#",
+        to: "/signout",
         id: "signOutTopNav",
         text: "Sign out"
     }

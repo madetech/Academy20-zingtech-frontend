@@ -37,7 +37,7 @@ export default function ReviewForm({employeeObject}) {
       <h2>Next of kin</h2>
       <Table.Row>
         <Table.CellHeader>Name</Table.CellHeader>
-        <Table.Cell>{ employeeObject.nextOfKinName} </Table.Cell>
+        <Table.Cell>{ employeeObject.nextOfKin} </Table.Cell>
       </Table.Row>
       <Table.Row>
         <Table.CellHeader>Contact telephone number</Table.CellHeader>

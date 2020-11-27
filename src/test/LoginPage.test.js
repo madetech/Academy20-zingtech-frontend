@@ -19,7 +19,7 @@ afterEach(() => {
     container = null;
 });
 
-it("Login component is visible", () => {
+xit("Login component is visible", () => {
     act(() => {
         render(<Router><LoginPage/></Router>, container);
     });

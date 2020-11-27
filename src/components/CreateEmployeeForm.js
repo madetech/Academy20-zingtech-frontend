@@ -16,7 +16,7 @@ const emptyEmployeeObject = {
   "address": null,
   "city": null,
   "postcode": null,
-  "nextOfKinName": null,
+  "nextOfKin": null,
   "nextOfKinContactNumber": null,
   "salaryBand": null,
   "officeLocation": null,

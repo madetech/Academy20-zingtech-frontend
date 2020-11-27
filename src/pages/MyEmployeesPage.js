@@ -36,12 +36,11 @@ function MyEmployeesPage(props) {
         }
       >
         <Heading>My employees</Heading>
-
-        <EmployeeDataTable data={employeeData} loading={loading} />
-        <br />
         <Link href="/createemployee">
           <Button>Create new employee</Button>
         </Link>
+        <br />
+        <EmployeeDataTable data={employeeData} loading={loading} />
       </Page>
     </>
   );

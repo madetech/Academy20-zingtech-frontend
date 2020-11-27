@@ -44,6 +44,10 @@ export default function CreateForm( {employeeObject, setEmployeeObject, validate
     console.log(validateState)
   }
 
+  const changeValue = (data) => {
+    setEmployeeObject({ ...employeeObject, [data.name]: data.value });
+  }
+
   return (
     <form>
       <Fieldset id="employeeInformation">
