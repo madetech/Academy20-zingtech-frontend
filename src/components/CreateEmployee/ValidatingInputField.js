@@ -13,12 +13,12 @@ export const ValidatingInputField = (props) => {
             {defaultValue: props.value}
         }
         onChange={(e) =>
-            props.changeValue(e.target.value,props.name)
+            props.changeValue(e.target.value, props.name)
         }
         onBlur={(e) => {
             setTouched(true);
             setValid(props.validate(e.target.value));
-            props.validInput(valid,props.name)
+            props.validInput(valid, props.name)
         }}
         meta={{touched: touched, error: valid ? null : props.errorMessage }}
         >

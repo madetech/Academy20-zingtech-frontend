@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import InputField from "@govuk-react/input-field";
 import Fieldset from "@govuk-react/fieldset";
-import DateField from "@govuk-react/date-field";
-import Button from "@govuk-react/button";
 import Select from '@govuk-react/select';
 
 import {ValidatingInputField} from "./ValidatingInputField"
@@ -32,36 +29,18 @@ const postcodeOnly = (value) => {
   return re.test(String(value));
 }
 
-const emptyValidation = {
-  "firstName": null,
-  "lastName": null,
-  "email": null,
-  "mobileNumber": null,
-  "address": null,
-  "city": null,
-  "postcode": null,
-  "nextOfKinName": null,
-  "nextOfKinContactNumber": null,
-  "salaryBand": null,
-  "officeLocation": null,
-  "position": null,
-  "userType": null,
-  "manager": null,
-};
 
-const validate = (field) => {
-  return validationRules[field.name].function(field.value);
-}
-
-export default function CreateForm( {employeeObject, setEmployeeObject} ) {
-   const [validateState, setValidateState] = useState(emptyValidation)
+export default function CreateForm( {employeeObject, setEmployeeObject, validateState, setValidateState} ) {
+   
 
   const changeValue = (value,name) => {
     setEmployeeObject({ ...employeeObject, [name]: value })
   }
 
-  const changeValidInput = (value,name) => {
+  const changeValidInput = (value, name) => {
     setValidateState({ ...validateState, [name]: value })
+    console.log(name)
+    console.log(value)
     console.log(validateState)
   }
 
@@ -154,40 +133,24 @@ export default function CreateForm( {employeeObject, setEmployeeObject} ) {
         </Fieldset.Legend>
         <ValidatingInputField 
             name={"nextOfKinName"}
-            label={"First Name"} 
+            label={"Full Name"} 
             value={employeeObject.nextOfKinName} 
             changeValue={changeValue} 
             validate={(value) => !/\d/.test(value) && value !== ""  }
-            errorMessage={"First name must only contain alphanumeric characters"}
+            errorMessage={"Next of kin name must only contain alphanumeric characters"}
             validInput={changeValidInput}
             />
-        <br />
-        <InputField
-          name="nextOfKinName"
-          value={employeeObject.nextOfKinName}
-          onChange={(e) =>
-            setEmployeeObject({
-              ...employeeObject,
-              nextOfKinName: e.target.value,
-            })
-          }
-        >
-          Next of Kin Full Name
-        </InputField>
-        <br />
 
-        <InputField
-          name="nextOfKinContactNumber"
-          value={employeeObject.nextOfKinContactNumber}
-          onChange={(e) =>
-            setEmployeeObject({
-              ...employeeObject,
-              nextOfKinContactNumber: e.target.value,
-            })
-          }
-        >
-          Next of Kin Contact Number
-        </InputField>
+        <br />
+        <ValidatingInputField 
+            name={"nextOfKinContactNumber"}
+            label={"Contact number"} 
+            value={employeeObject.nextOfKinContactNumber} 
+            changeValue={changeValue} 
+            validate={phoneOnly}
+            errorMessage={"Please format phone numbers like this: 07483 432 943 or 01283 23432"}
+            validInput={changeValidInput}
+            />
         <br />
       </Fieldset>
 
@@ -216,60 +179,54 @@ export default function CreateForm( {employeeObject, setEmployeeObject} ) {
         </Select>
         <br />
 
-        <InputField
-          name="officeLocation"
-          value={employeeObject.officeLocation}
-          onChange={(e) =>
-            setEmployeeObject({
-              ...employeeObject,
-              officeLocation: e.target.value,
-            })
-          }
-        >
-          Office Location
-        </InputField>
+
+        <ValidatingInputField 
+            name={"officeLocation"}
+            label={"Office Location"} 
+            value={employeeObject.officeLocation} 
+            changeValue={changeValue} 
+            validate={(value) => !/\d/.test(value) && value !== ""}
+            errorMessage={"Please only use alphanumeric characters"}
+            validInput={changeValidInput}
+            />
         <br />
 
-        <InputField
-          name="position"
-          value={employeeObject.position}
-          onChange={(e) =>
-            setEmployeeObject({
-              ...employeeObject,
-              position: e.target.value,
-            })
-          }
-        >
-          Position
-        </InputField>
+        <ValidatingInputField 
+            name={"positions"}
+            label={"Position"} 
+            value={employeeObject.position} 
+            changeValue={changeValue} 
+            validate={(value) => !/\d/.test(value) && value !== ""  }
+            errorMessage={"Please only use alphabet characters"}
+            validInput={changeValidInput}
+            />
+
+        <br />
+        <Select  label="User Type"
+        name="userType"
+        value={employeeObject.userType}
+        onChange={(e) =>
+          setEmployeeObject({
+            ...employeeObject,
+            userType: parseInt(e.target.value,10),
+          })
+        }>
+          <option value={null}>Please choose a user type</option>
+          <option value="admin">Admin</option>
+          <option value="manager">Manger</option>
+          <option value="employee">Employee</option>
+        </Select>
         <br />
 
-        <InputField
-          name="userType"
-          value={employeeObject.userType}
-          onChange={(e) =>
-            setEmployeeObject({
-              ...employeeObject,
-              userType: e.target.value,
-            })
-          }
-        >
-          User Type
-        </InputField>
-        <br />
-
-        <InputField
-          name="manager"
-          value={employeeObject.manager}
-          onChange={(e) =>
-            setEmployeeObject({
-              ...employeeObject,
-              manager: parseInt(e.target.value,10),
-            })
-          }
-        >
-          Manager
-        </InputField>
+        <ValidatingInputField 
+            name={"manager"}
+            label={"Manager (ID)"} 
+            value={employeeObject.manager} 
+            changeValue={changeValue} 
+            validate={(value) => !/\D/.test(value) && value !== ""}
+            errorMessage={"Please write manager's ID (numeric)"}
+            validInput={changeValidInput}
+            />
         <br />
       </Fieldset>
       </form>
