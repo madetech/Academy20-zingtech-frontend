@@ -6,16 +6,19 @@ import Page from "@govuk-react/page";
 import CreateEmployeeForm from "../components/CreateEmployeeForm";
 import LoggedInTopNav from "../components/LoggedInTopNav";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function CreateNewEmployeePage() {
-  function sendToBackend(newEmployeeData) {
-    console.log(JSON.stringify(newEmployeeData));
+  const { getAccessTokenSilently } = useAuth0();
+  async function sendToBackend(newEmployeeData) {
+    
+    const token = await getAccessTokenSilently();
     axios
       .post(
         "https://zingtech-backend.herokuapp.com/api/employeedata",
         newEmployeeData,
         {
-          headers: { "Access-Control-Allow-Origin": "*" },
+          headers: { "Access-Control-Allow-Origin": "*", 'authorization': `Bearer ${token}` },
         }
       )
       .then((response) => {

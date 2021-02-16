@@ -9,18 +9,26 @@ import VisitDataTable from '../components/VisitDataTable';
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 
-const MyVisitorsPage = (props) => {
+import { useAuth0 } from "@auth0/auth0-react";
+
+function MyVisitorsPage(props) {
 
   const [visitData, setVisitData] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const { getAccessTokenSilently } = useAuth0();
   useEffect(() => {
-    setLoading(true);
-    axios.get('https://zingtech-backend.herokuapp.com/api/visitdata')
-      .then(res => {
-        setLoading(false);
-        setVisitData(res.data.data);
-      })
+    async function getData() {
+      setLoading(true);
+      const token = await getAccessTokenSilently();
+      axios.get('https://zingtech-backend.herokuapp.com/api/visitdata',
+      {headers: {'authorization': `Bearer ${token}`}})
+        .then(res => {
+          setLoading(false);
+          setVisitData(res.data.data);
+        })
+    }
+    getData();
+
   }, [])
 
   return (
